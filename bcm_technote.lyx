@@ -13,6 +13,9 @@
 \setlength{\topmargin}{0in}
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
+
+\usepackage{lineno}
+\linenumbers
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -81,7 +84,7 @@
 \begin_body
 
 \begin_layout Title
-Beam Charge Measurement for g2p/GEp experiment
+Beam Charge Measurement for the g2p/GEp experiments
 \end_layout
 
 \begin_layout Author
@@ -89,17 +92,17 @@ Pengjia Zhu
 \end_layout
 
 \begin_layout Abstract
-The g2p/GEp experiment used a solid 
-\begin_inset Formula $NH_{3}$
+The g2p/GEp experiments used a solid 
+\begin_inset Formula $\mathrm{NH_{3}}$
 \end_inset
 
- polarized target which the polarization of it is sensitive to temperature
+ polarized target, where the target's polarization is sensitive to temperature
  and radiation.
- The beam current was limited to 5~100nA during the experiment to avoid
+ The beam current was limited to 5-100nA during the experiment to avoid
  too much depolarization of target.
- This technical note summarized the method to calibrate the beam charge
- monitors (BCM) for g2p/GEp experiment, with the devices of tungsten calorimeter
-, new BCM receiver, and DAQ system.
+ This technical note summarizes the method to calibrate the beam charge
+ monitors (BCM) for the g2p/GEp experiments, with the devices of tungsten
+ calorimeter, new BCM receiver, and DAQ system.
 \end_layout
 
 \begin_layout Section
@@ -107,13 +110,14 @@ Hardware
 \end_layout
 
 \begin_layout Standard
-The BCM system used for g2p/GEp experiment contains two RF cavities, a BCM
- receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter
- for calibration.
+The BCM system used for the g2p/GEp experiments contains two RF cavities,
+ a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
+ calorimeter for calibration.
  The Unser monitor was not considered due to noisy signal, and the farady
- cup in injector was not used for calibration due to considerable leak current
- between the Hall.
- The location of them are shown in Fig.
+ cup in injector was not used for calibration due to considerable leakage
+ current between the Halls.
+ The location of them is shown in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Beamline"
@@ -148,7 +152,7 @@ name "fig:Beamline"
 
 \end_inset
 
-Beamline for g2p/GEp experiment
+Beamline for the g2p/GEp experiments
 \end_layout
 
 \end_inset
@@ -177,10 +181,10 @@ key "Denard2001"
 
 \end_inset
 
- did not work in low current, a new BCM receiver was designed by John Mosson
- and his colleagues from JLab instrumentation group for the purpose of achieving
- enough signal/noise (S/N) ratio in the beam current environment from several
- nanoampere beam current to several micro-ampere 
+ did not work at low current, a new BCM receiver was designed by John Mosson
+ and his colleagues from the JLab instrumentation group for the purpose
+ of achieving a reasonable signal/noise (S/N) ratio in the beam current
+ environment a range of several nanoampere to several micro-ampere 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mussonece652paper"
@@ -189,6 +193,7 @@ key "mussonece652paper"
 
 .
  The design diagram is shown in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BPM-receiver"
@@ -223,7 +228,7 @@ name "fig:BPM-receiver"
 
 \end_inset
 
-BPM and BCM receiver used for g2p/GEp experiment
+BPM and BCM receiver used for the g2p/GEp experiments
 \end_layout
 
 \end_inset
@@ -237,19 +242,26 @@ BPM and BCM receiver used for g2p/GEp experiment
 \end_layout
 
 \begin_layout Standard
-The receiver consists of the analog part and the digital part.
- The analog part includes the amplifies and the mixer.
+The receiver consists of an analog part and a digital part.
+ The analog part includes the amplifier and the mixer.
  The multiply mixer converts the ratio frequency (RF) signal to the intermediate
  frequency (IF) signal.
  The signal is digitized by a 36 MSPS ADC, and applied by a cascaded-integrator–
 comb (CIC) filter and an infinite-inpulse-response (IIR) filter (10.4 kHz).
  The CORDIC system is used to get the amplitude and phase of the digital
- signal.
- The 20 bit digital signal is converted back to 0~10V analog signal to match
- the existed Hall A DAQ system using a 18 bit DAC.
+ signal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mussonece652paper"
+
+\end_inset
+
+.
+ The 20 bit digital signal is converted back to 0-10V analog signal to match
+ the existing Hall A DAQ system using a 18 bit DAC.
  A DIV unit is used to intercept the signal from 20 bit to 18 bit by applying
  an adjustable bit shift.
- More details can be found in John Musson's technote 
+ More details can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mussonece652paper"
@@ -264,7 +276,9 @@ Data acquisition system
 \end_layout
 
 \begin_layout Standard
-The BCM data from receiver was connected to the DAQ system as shown in Fig.
+The BCM data from the receiver was connected to the DAQ system as shown
+ in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:daq_bcm"
@@ -313,8 +327,8 @@ DAQ system for BCM
 
 \end_inset
 
- The voltage signal from receiver was splitted to the V2F module and the
- HAPPEX ADC.
+ The voltage signal from receiver was split and sent to the V2F module and
+ the HAPPEX ADC.
  
 \end_layout
 
@@ -327,8 +341,8 @@ The V2F converts the voltage signal to the frequency signal in order to
  connect to the scalers for counting.
  The SIS380x scaler is the VME implement.
  It has two modes switched by a jumber on the board: SIS3800 and SIS3801.
- The SIS3800 scaler counts the charge, clock and trigger signal for each
- event, and delivers them to the data stream when the event trigger coming.
+ The SIS3800 scaler counts the charge, clock and trigger signals for each
+ event, and delivers them to the data stream when the event trigger is accepted.
  The counter data for the SIS3800 is only cleared at the beginning of the
  run, thus the SIS3800 was used to get the counts for the whole run.
 \end_layout
@@ -336,6 +350,7 @@ The V2F converts the voltage signal to the frequency signal in order to
 \begin_layout Standard
 The SIS3801 was used to get the helicity gated information.
  Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:helicity"
@@ -418,10 +433,11 @@ HAPPEX DAQ
 \end_layout
 
 \begin_layout Standard
-The HAPPEX DAQ uses the 18 bit ADCs which were designed for the parity violation
+The HAPPEX DAQ uses 18 bit ADCs, which were designed for the parity violation
  experiments.
- It has high bit resolution for getting high precise charge asymmetry.
- It was reprogrammed and reassembled for g2p experiment.
+ It has a high bit resolution for measuring small parity violating asymmetries
+ to high precision.
+ This DAQ was reprogrammed and reassembled for the g2p/GEp experiments.
 \end_layout
 
 \begin_layout Standard
@@ -432,7 +448,7 @@ key "timingboard"
 
 \end_inset
 
-, several pieces of HAPPEX ADC 
+, several 18-bit ADCs 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ADC18bob"
@@ -446,8 +462,9 @@ key "flexioEd"
 
 \end_inset
 
-, a trigger interface (TI), and a VXWorks CPU.
+, a trigger interface module (TI), and a VxWorks CPU.
  The diagram of HAPPEX DAQ is shown in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Happex-DAQ-diagram-1"
@@ -501,10 +518,11 @@ Timing board
 
 \begin_layout Standard
 The timing board generates several time signals to control the start and
- stop integration time of ADC.
+ stop integration time of the ADCs.
  The T-Settle signal was used as the trigger source for the timing board.
- Based on the trigger signal, the timing board generates a group of signals
+ Based on the trigger signal, the timing board generates a set of signals
  (Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Timing-board-signals-1"
@@ -512,11 +530,11 @@ reference "fig:Timing-board-signals-1"
 \end_inset
 
 ).
- The reset signal controls the ADC integrating.
+ The reset signal controls the ADC integration.
  The delay time between the baseline signal and the peak signal is used
- as integration time, and the digital value difference between them is used
- as integrated result.
- The DAC module in the timing board was used as debugging source during
+ as the integration time, and the digital value difference between them
+ is used as integrated result.
+ The DAC module in the timing board was used as a debugging source during
  the experiment.
 \begin_inset Float figure
 placement H
@@ -581,31 +599,34 @@ HAPPEX ADC
 \end_layout
 
 \begin_layout Standard
-The HAPPEX ADC was designed for high bit resolution (18 bit) and small non-linea
-rity (
+The HAPPEX ADC was designed for high bit resolution (18 bit) and a small
+ non-linearity (
 \begin_inset Formula $\leq2\times10^{-5}$
 \end_inset
 
 ).
  From the asymmetry measurement test (Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Comparison-for-asym"
 
 \end_inset
 
-), the bit resolution for HAPPEX ADC was much better than the one for scaler.
- The integration time of HAPPEX ADC controlled by the timing board was 875
+), the bit resolution for the HAPPEX ADCs were much better than the one
+ for the scalers.
+ The integration time of HAPPEX ADCs controlled by the timing board was
+ 875 
 \begin_inset Formula $\mu s$
 \end_inset
 
-, a little bit lower than the helicity period (1041.65
+, a little bit smaller than the helicity period (1041.65 
 \begin_inset Formula $\mu s$
 \end_inset
 
 ).
- It recorded more precise position and current information than the fastbus
- ADC1881 (with integration time less than 50 
+ The HAPPEX ADCs recorded more precise position and current information
+ than the FASTBUS 1881 ADCs (with an integration time less than 50 
 \begin_inset Formula $ns$
 \end_inset
 
@@ -619,7 +640,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../thesis/pic/asym_diff.png
+	filename pic/asym_diff.png
 	lyxscale 30
 	width 95line%
 
@@ -648,12 +669,11 @@ Charge asym comparison between HAPPEX and scaler
 
 \end_inset
 
-Comparison of charge asymmetry measurement between using HAPPEX ADC and
- scaler.
- The top three pictures use HAPPEX ADC, while the bottom three pictures
- use scaler.
+Comparison of charge asymmetry measurements from HAPPEX ADCs and scalers.
+ The top three pictures use HAPPEX ADCs, while the bottom three pictures
+ use scalers.
  The beam currents from left to right are 125 nA, 75 nA, and 50 nA.
- The total events are same.
+ The total number of events are same in each histogram.
 \end_layout
 
 \end_inset
@@ -682,17 +702,17 @@ Ring Buffer
 \end_layout
 
 \begin_layout Standard
-A vxworks CPU controls the data reading from the HAPPEX ADC and the flexible
+A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible
  IO to the ringbuffer server in the CPU's register.
  For more reliable performance and less CPU occupation, a trigger is used
  instead of checking the pair sync polarity all of the time.
  The trigger from the flexible IO has the same period as the T-Settle.
- Each trigger causes the CPU read out the data from the flexible IO and
- the ADC once.
- A trigger interface controlled by the HRS trigger superviser is reading
- the data from the ringbuffer server to the data-stream.
- For the online debugging, a TCP-IP server was running in the CPU to readout
- the data from the ringbuffer from any linux computer at any time.
+ Each trigger causes the CPU to read out the data from the flexible IO and
+ the ADCs once.
+ A trigger interface controlled by the HRS trigger superviser reads the
+ data from the ringbuffer server to the data-stream.
+ For the online debugging, a TCP-IP server was running on the CPU to readout
+ the data from the ringbuffer from any Linux computer at any time.
 \end_layout
 
 \begin_layout Subsection
@@ -707,15 +727,16 @@ key "hacalorimeter"
 
 \end_inset
 
- was installed downstream of the BCM and two rasters 
+ located downstream of the BCMs and the two rasters 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Zhu20161"
 
 \end_inset
 
- for calibrating the BCM using the beam caused temperature rising, as shown
- in Fig.
+ for calibrating the BCMs by measuring the beam induced temperature rise,
+ as shown in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Tungsten-Calorimeter"
@@ -765,70 +786,76 @@ Tungsten Calorimeter
 
 \end_inset
 
- The chamber held the tungsten is pumped into vacuum to minimize heat loss.
+ The chamber that holds the tungsten is pumped down to vacuum to minimize
+ heat loss.
  The tungsten is in three positions for the different purpose: 
 \end_layout
 
 \begin_layout Enumerate
-Beam charging.
- The tungsten is in the beam pipe.
+Beam charging, the tungsten is in the beam pipe.
  All of the incoming beam electrons hit the tungsten.
- The temperature is arising during this period.
+ The temperature is increasing during this period.
 \end_layout
 
 \begin_layout Enumerate
-Equilibrating.
- The tungsten moves out the beam pipe but doesn't touch the cooling plate.
+Equilibrating, the tungsten moves out of the beam pipe but doesn't touch
+ the cooling plate.
  The beam turns off.
- The temperature tends to stable.
- The measurement of the temperature is in this period.
+ The temperature stabilizes.
+ The measurement of the temperature occurs in this period.
 \end_layout
 
 \begin_layout Enumerate
-Cooling.
- The tungsten moves to the cooling plate to cool down the tungsten.
+Cooling, the tungsten moves to the cooling plate to cool down the tungsten.
 \end_layout
 
 \begin_layout Standard
-For the temperature measurement, 6 thermometry devices (RTDs) are mounted
- on the outer surface at each end of the tungsten slug.
+For the temperature measurement, six resistance temperature detectors (RTDs)
+ are mounted on the outer surface at each end of the tungsten slug.
 \end_layout
 
 \begin_layout Section
-Calibrate the BCM
+Calibration of the BCMs
 \end_layout
 
 \begin_layout Standard
-The calibration was taken for several times during the experiment for the
- different periods.
- In order to receive the uniform heat from beam over the tungsten surface,
- the rasters were turned on when taking the BCM calibration.
- The limited size of the ringbuffer caused the potential data lost when
- the read-out speed lower than the read-in speed.
- For the deadtime consideration, the DAQ system only read no more than 50
- group data from ringbuffer.
- An additional clock trigger with larger than 20 Hz (
+Calibration data were taken several times during the experiment.
+ In order to achieve the uniform heat load from the beam over the tungsten
+ surface, the rasters were turned on during the BCM calibration.
+ The limited size of the ringbuffer caused potential loss of data when the
+ read-out speed was lower than the read-in speed.
+ For the deadtime consideration, the DAQ system only read out no more than
+ 50 sets data from the ringbuffer.
+ An additional clock trigger with a frequency larger than 20 Hz (
 \begin_inset Formula $\geqq$
 \end_inset
 
- 960(helicity frequency)/50) was added to avoid data lost in ringbuffer
- recorded in data-stream.
+ 960 (helicity frequency) / 50) was added to avoid data loss in the ringbuffer
+ recorded in the data-stream.
  The clock signal was needed for calculating the pedestal of the scaler
  and the ADC.
- For HAPPEX ADC, the helicity entries was used for clock.
+ For the HAPPEX ADC, the helicity entries was used as the clock.
  
 \end_layout
 
 \begin_layout Standard
-There were two types of clock signal, fast clock and slow clock.
- The frequency of the fast clock was ~103.7 KHz, while the frequency of the
- slow clock was ~1KHz.
+There were two types of clocks: fast clock and slow clock.
+ The frequency of the fast clock was 
+\begin_inset Formula $\sim$
+\end_inset
+
+103.7 KHz, while the frequency of the slow clock was 
+\begin_inset Formula $\sim$
+\end_inset
+
+1KHz.
  The pedestal value is related to the frequency of the clock signal, thus
- the calibration constants of them are different.
+ the calibration constants for them are different.
 \end_layout
 
 \begin_layout Standard
 A complete calibration period is shown in Fig.
+   
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BCM-Calibration"
@@ -839,7 +866,7 @@ reference "fig:BCM-Calibration"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -863,9 +890,9 @@ name "fig:BCM-Calibration"
 
 \end_inset
 
-BCM Calibration, the first two pictures are the temperature arise of the
- RTDs, the last four pictures are the counts recorded in different devices
- at the same time.
+BCM Calibration, the top left and right figures are the temperature rise
+ of the RTDs, the last four plots show the counts recorded in the scalers
+ and the HAPPEX ADCs at the same time.
 \end_layout
 
 \end_inset
@@ -879,11 +906,11 @@ BCM Calibration, the first two pictures are the temperature arise of the
 
 \end_inset
 
- The total temperature arise was used to calculate the total charge.
+ The total temperature rise was used to calculate the total charge.
  The zero-order polynomial fits were taken before the beam charging and
- after the temperature become stable when tungsten in the equilibrating
+ after the temperature become stable when the tungsten is in the equilibrating
  position.
- The relationship between the total charge and the temperature arise is:
+ The relationship between the total charge and the temperature rise is:
 \end_layout
 
 \begin_layout Standard
@@ -908,6 +935,14 @@ key "tungstenelog"
 
 .
  The result is shown in Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tungsten-calorimeter-heat"
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -961,13 +996,13 @@ key "tungstenelog"
 \begin_inset Formula $T$
 \end_inset
 
- is the average temperature from 6 RTDs.
+ is the average temperature from the 6 RTDs.
  
 \end_layout
 
 \begin_layout Standard
-There are several devices needed to be calibrated, each one has it's own
- special condition.
+There are several devices needed to be calibrated, and each one has its
+ own special condition.
  The detail calibration procedures for each device are as follows.
 \end_layout
 
@@ -976,25 +1011,27 @@ Calibration for SIS3800 scaler
 \end_layout
 
 \begin_layout Standard
-A reset signal was sent to the SIS3800 scaler at the beginning of run to
- clear the counts.
+A reset signal was sent to the SIS3800 scaler at the beginning of the run
+ to clear the counts.
  Since the scaler was found to cause high deadtime, only clock signals were
- sampled for each event, others were sampled for each 1000 events.
+ sampled for each event, while other signals were sampled for each 1000
+ events.
  Also the DAQ read the scaler once at the end of the run.
  
 \end_layout
 
 \begin_layout Standard
-The third picture in Fig.
+The middle left picture in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BCM-Calibration"
 
 \end_inset
 
- is for SIS3800 calibration.
- The steep range is the period when the beam come, corresponding to the
- steep range in the first picture.
+ is for the SIS3800 calibration.
+ The rise in the graph is the period when the beam hits the tungsten, correspond
+ing to the rise in the top left.
  The total charge has the following relation with the counts:
 \end_layout
 
@@ -1020,7 +1057,7 @@ where
 \end_inset
 
  is the pedestal value which is calculated from the first-order polynomial
- fits before and after the beam.
+ fits before and after the beam heats the tungsten.
  To get the 
 \begin_inset Formula $slope$
 \end_inset
@@ -1039,7 +1076,7 @@ where
 \begin_inset Formula $slope$
 \end_inset
 
- value is then calculated.
+ value is then determined.
 \end_layout
 
 \begin_layout Standard
@@ -1062,7 +1099,7 @@ where
 \begin_inset Formula $clockrate$
 \end_inset
 
- are defined as the bcm counts and clock counts per second.
+ are defined as the bcm counts per second and clock counts per second.
 \end_layout
 
 \begin_layout Subsection
@@ -1071,7 +1108,7 @@ Calibration for SIS3801 scaler
 
 \begin_layout Standard
 To calibrate the SIS3801 scaler it is necessary to accumulate all of the
- counts for each helicity window, which needs no data lost.
+ counts for each helicity window, without any loss of data.
  There are two methods to get the total counts.
  One is using the sum counts from two virtual scalers.
  The offline analyzer 
@@ -1081,12 +1118,12 @@ key "analyzer"
 
 \end_inset
 
- automatically accumulates the total counts for positive helicity status
- and negative helicity status, which present two independent variables (positive
+ automatically accumulates the total counts for positive helicity state
+ and negative helicity state, which present two independent variables (positive
  and negative virtual scaler) in the raw data.
  Another is accumulating all of the counts from the ringbuffer.
  The helicity decoder was used to check if data were lost.
- The calculated calibration constants are same from two methods.
+ The calculated calibration constants are the same from the two methods.
  Further procedures are same as the SIS3800.
  The total charge has the following relation with the counts:
 \end_layout
@@ -1108,7 +1145,7 @@ where the
 \end_inset
 
  are counted from the SIS3801 scaler.
- Since the SIS3801 is not counting in 70 
+ Since the SIS3801 does not count for 70 
 \begin_inset Formula $\mu s$
 \end_inset
 
@@ -1116,7 +1153,8 @@ where the
 \begin_inset Formula $\mu s$
 \end_inset
 
-, the slope calculated for SIS3801 are larger than the slope for SIS3800.
+, the slopes calculated for the SIS3801 are larger than the slope for the
+ SIS3800.
  The beam current is calculated as:
 \end_layout
 
@@ -1149,8 +1187,8 @@ Calibration for HAPPEX ADC
 
 \begin_layout Standard
 To calibrate the HAPPEX ADC, the values are accumulated for all of the events
- between two time points as the total counts.
- The entries in the HAPPEX DAQ is used as the time stamp.
+ between two time periods as the total counts.
+ The entries in the HAPPEX DAQ are used as the time stamp.
  The total charge has the following relation with the counts:
 \end_layout
 
@@ -1186,19 +1224,26 @@ Uncertainty
 \end_layout
 
 \begin_layout Standard
-The uncertainty of the calculated charge from tungsten comes from the beam
- energy, RTD, measured tungsten heat capacity, and the heat loss.
- The accuracy of the beam energy calculated from Arc measurement is 0.2 MeV
- in the range of 0.5 to 6 GeV
+The uncertainty of the calculated charge from the tungsten calorimeter comes
+ from the beam energy, RTD, measured tungsten heat capacity, and the heat
+ loss.
+ The accuracy of the beam energy calculated from the ARC measurement 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hallanim"
+
+\end_inset
+
+ is 0.2 MeV in the range of 0.5 to 6 GeV 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "arcmeasurepage"
 
 \end_inset
 
-, which contributes the uncertainty of calculated charge of 0.34 nC per 1
- K temperature rise (2.2 GeV beam energy).
- The uncertainties of the RTDs are 12.5 mK
+, which contributes to the uncertainty of calculated charge of 0.34 nC per
+ 1 K temperature rise (2.2 GeV beam energy).
+ The uncertainties of the RTDs are 12.5 mK 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "calorimeterrtd"
@@ -1209,7 +1254,7 @@ key "calorimeterrtd"
 \begin_inset Formula $0.046\,\mu C$
 \end_inset
 
- (2.2GeV beam energy).
+ (2.2 GeV beam energy).
  The 
 \begin_inset Formula $50\,J/K$
 \end_inset
@@ -1220,26 +1265,36 @@ key "calorimeterrtd"
 
  per 1 K temperature rise (2.2GeV beam energy).
  The Hall A calorimeter thermal and mechanical design limits heat losses
- to the ~ 0.2 % level if the measurement within 20 min
+ to the 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 0.2% level if the measurement is within 20 minutes 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hacalorimeter"
 
 \end_inset
 
-, which causes the uncertainty of calculated charge additional 0.2 %.
- The total uncertainty is ~ 0.68 % for the calculated charge from tungsten.
+, which results in an uncertainty of the calculated charge of an additional
+ 0.2 %.
+ The total uncertainty is 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 0.68 % for the calculated charge from tungsten.
 \end_layout
 
 \begin_layout Standard
-By comparing of the difference between upstream and downstream BCM, the
- fluctuations between upstream and downstream are below 
+By comparing the difference between the upstream and downstream BCMs, the
+ fluctuations between the two are below 
 \begin_inset Formula $0.19\:\mu C$
 \end_inset
 
- for 90 % runs.
- The relative differences between them for 90 % runs are below 0.7 %, as
- shown in Fig.
+ for 90% of runs.
+ The relative differences between them for 90% runs are below 0.7%, as shown
+ in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Comparingud"
@@ -1250,7 +1305,7 @@ reference "fig:Comparingud"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1334,9 +1389,9 @@ name "fig:Comparingud"
 
 \end_inset
 
-Comparing of the charge calculated from upstream and downstream.
- Each event in picture is the total charge calculated from one run from
- experiment.
+Comparison of the charge calculated from the upstream and downstream BCMs.
+ Each entry in the graph is the total charge calculated from each run from
+ the experiment.
 \end_layout
 
 \end_inset
@@ -1347,9 +1402,9 @@ Comparing of the charge calculated from upstream and downstream.
 \end_inset
 
 .
- The differences indicate the uncertainty of the BCM is below 0.7 %.
- Combining with the uncertainty of the tungsten calorimeter, the final uncertain
-ty of BCM is below 1 %.
+ The differences indicate the uncertainty of the BCMs are below 0.7%.
+ Combined with the uncertainty of the tungsten calorimeter, the final uncertaint
+y of BCM is below 1%.
 \end_layout
 
 \begin_layout Section
@@ -1357,20 +1412,20 @@ Calibration constants
 \end_layout
 
 \begin_layout Standard
-The calibration constants are shown in appendix.
+The calibration constants are shown in the Appendix Tables 1-9.
  Some specials are listed below:
 \end_layout
 
 \begin_layout Itemize
-~Mar.17 3rm downstream scaler abnormal
+begin - Mar.17 3rm downstream scaler abnormal
 \end_layout
 
 \begin_layout Itemize
-Mar.18~Apr.2 left arm upstream scaler noisy
+Mar.18 - Apr.2 left arm upstream scaler noisy
 \end_layout
 
 \begin_layout Itemize
-Apr.2~Apr.9 right arm SIS3801 not working
+Apr.2 - Apr.9 right arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
@@ -1378,7 +1433,7 @@ Apr.9 changed right arm scaler channel for bcm
 \end_layout
 
 \begin_layout Itemize
-Apr.19~ calibration constant changed
+Apr.19 - calibration constant changed
 \end_layout
 
 \begin_layout Itemize
@@ -1386,7 +1441,7 @@ Near May.12 third arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
-May.13~May.14 downstream bcm broken
+May.13 - May.14 downstream bcm broken
 \end_layout
 
 \begin_layout Standard
@@ -1411,47 +1466,47 @@ Mag_Filter_K
 \end_layout
 
 \begin_layout Itemize
-~Mar.2 18:39:42 gain changing
+begin - Mar.2 18:39:42 gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.2 18:39:43~Mar.5 10:00:12 10/10/1 9/9/1 3 4
+Mar.2 18:39:43 - Mar.5 10:00:12 10/10/1 9/9/1 3 4
 \end_layout
 
 \begin_layout Itemize
-Mar.5 10:00:13~Mar.5 10:27:40 gain changing 
+Mar.5 10:00:13 - Mar.5 10:27:40 gain changing 
 \end_layout
 
 \begin_layout Itemize
-Mar.5 10:27:41~Mar.6 8:51:39 10/10/1 9/9/1 1 4
+Mar.5 10:27:41 - Mar.6 8:51:39 10/10/1 9/9/1 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.6 8:51:40~Mar.6 13:45:43 10/13/1 9/9/1 1 4
+Mar.6 8:51:40 - Mar.6 13:45:43 10/13/1 9/9/1 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.6 13:45:44~Mar.6 13:49:05 gain changing
+Mar.6 13:45:44 - Mar.6 13:49:05 gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.6 13:49:06~Mar.7 17:20:10 29/30/4 27/27/4 1 4
+Mar.6 13:49:06 - Mar.7 17:20:10 29/30/4 27/27/4 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.7 17:20:11~Mar.7 17:23:25 gain changing
+Mar.7 17:20:11 - Mar.7 17:23:25 gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.7 17:23:25~Mar.10 13:12:53 29/30/4 27/27/4 1 4
+Mar.7 17:23:25 - Mar.10 13:12:53 29/30/4 27/27/4 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.10 13:12:54~Mar.10 13:33:15 gain changing
+Mar.10 13:12:54 - Mar.10 13:33:15 gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.10 13:33:16~end 40/41/4 40/43/4 1 4 
+Mar.10 13:33:16 - end 40/41/4 40/43/4 1 4 
 \end_layout
 
 \begin_layout Standard
@@ -1615,7 +1670,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -1755,7 +1810,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -1891,7 +1946,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -2032,7 +2087,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2173,7 +2228,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2312,7 +2367,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2408,7 +2463,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash
@@ -2504,7 +2559,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash
@@ -2597,7 +2652,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash
