@@ -1,0 +1,42 @@
+add an introduction of why we want to measure the charge.
+Added "The measured charge was further used to get the accurate physics asymmetries" in abstract 
+
+line 5 don't use "'s" in written english
+Modified
+
+12-13 Unser was not used  because it has am accuracy of 0.5 uA so it
+is not usable at low current. Faraday cup has about same accuracy and
+loss in the machine needs to be taken into account.
+Modified
+
+17 Musson
+Modified
+
+line 29 V2F is not defined yet so write Voltage to Frequency (V2F)
+Modified
+
+31 : add DC voltage from the BCM receiver
+in order to be readout instead of connect
+replaced switched by selected by jumper
+
+
+line 32 : I don't understand what you mean by implement
+
+Put a paragraph describing the helicity structure and delayed helicity
+and after explain what is the ring buffer
+
+line 43 and 55 : are repeated
+Modified
+
+72 : the tungsten calorimeter is located upstream not downstream
+The tungsten calorimeter is located downstream. 
+
+75 : In beam position
+Modified
+
+Can you add a conclusion for the stability of the calibration with time ?
+
+Do we have two calibrations with exact same settings ?
+
+May run through the spell checker I think there might be a few more
+typos I missed.

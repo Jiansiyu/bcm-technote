@@ -36,12 +36,12 @@
 \author{Pengjia Zhu}
 \maketitle
 \begin{abstract}
-The g2p/GEp experiments used a solid $\mathrm{NH_{3}}$ polarized target, where the target's polarization is sensitive to temperature and radiation. The beam current was limited to 5-100nA during the experiment to avoid too much depolarization of target. This technical note summarizes the method to calibrate the beam charge monitors (BCM) for the g2p/GEp experiments, with the devices of tungsten calorimeter, new BCM receiver, and DAQ system.
+The g2p/GEp experiments used a solid $\mathrm{NH_{3}}$ polarized target, where the polarization of the target is sensitive to temperature and radiation. The beam current was limited to 5-100nA during the experiment to avoid too much depolarization of target. The measured charge was further used to get the accurate physics asymmetries. This technical note summarizes the method to calibrate the beam charge monitors (BCM) for the g2p/GEp experiments, with the devices of tungsten calorimeter, new BCM receiver, and DAQ system.
 \end{abstract}
 
 \section{Hardware}
 
-The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. The Unser monitor was not considered due to noisy signal, and the farady cup in injector was not used for calibration due to considerable leakage current between the Halls. The location of them is shown in Fig.  \ref{fig:Beamline}.
+The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. Unser was not used because it has an accuracy of 0.5 uA so it is not usable at low current. Farady cup has about same accuracy and loss in the machine needs to be taken into account. The location of them is shown in Fig.  \ref{fig:Beamline}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/beamline_lite}
@@ -56,7 +56,7 @@ The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM 
 
 \subsection{BCM receiver}
 
-Since the original RMS-to-DC converter \cite{Denard2001} did not work at low current, a new BCM receiver was designed by John Mosson and his colleagues from the JLab instrumentation group for the purpose of achieving a reasonable signal/noise (S/N) ratio in the beam current environment a range of several nanoampere to several micro-ampere \cite{mussonece652paper}. The design diagram is shown in Fig.  \ref{fig:BPM-receiver}.
+Since the original RMS-to-DC converter \cite{Denard2001} did not work at low current, a new BCM receiver was designed by John Musson and his colleagues from the JLab instrumentation group for the purpose of achieving a reasonable signal/noise (S/N) ratio in the beam current environment a range of several nanoampere to several micro-ampere \cite{mussonece652paper}. The design diagram is shown in Fig.  \ref{fig:BPM-receiver}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/receiver}
@@ -81,7 +81,7 @@ The BCM data from the receiver was connected to the DAQ system as shown in Fig. 
 
 
 \end{figure}
- The voltage signal from receiver was split and sent to the V2F module and the HAPPEX ADC. 
+ The voltage signal from receiver was split and sent to the Voltage to Frequency (V2F) module and the HAPPEX ADC. 
 
 
 \subsubsection{Scaler}
@@ -101,7 +101,7 @@ The SIS3801 was used to get the helicity gated information. Fig.  \ref{fig:helic
 
 \subsubsection{HAPPEX DAQ}
 
-The HAPPEX DAQ uses 18 bit ADCs, which were designed for the parity violation experiments. It has a high bit resolution for measuring small parity violating asymmetries to high precision. This DAQ was reprogrammed and reassembled for the g2p/GEp experiments.
+The HAPPEX DAQ were designed for the parity violation experiments. This DAQ was reprogrammed and reassembled for the g2p/GEp experiments.
 
 The HAPPEX DAQ contains a timing board (NIM) \cite{timingboard}, several 18-bit ADCs \cite{ADC18bob}, a flexible IO (FLEXIO,NIM) \cite{flexioEd}, a trigger interface module (TI), and a VxWorks CPU. The diagram of HAPPEX DAQ is shown in Fig.  \ref{fig:Happex-DAQ-diagram-1}.
 \begin{figure}
@@ -129,7 +129,7 @@ The timing board generates several time signals to control the start and stop in
 
 \paragraph{HAPPEX ADC}
 
-The HAPPEX ADC was designed for high bit resolution (18 bit) and a small non-linearity ($\leq2\times10^{-5}$). From the asymmetry measurement test (Fig.  \ref{fig:Comparison-for-asym}), the bit resolution for the HAPPEX ADCs were much better than the one for the scalers. The integration time of HAPPEX ADCs controlled by the timing board was 875 $\mu s$, a little bit smaller than the helicity period (1041.65 $\mu s$). The HAPPEX ADCs recorded more precise position and current information than the FASTBUS 1881 ADCs (with an integration time less than 50 $ns$ during the experiment). 
+The HAPPEX ADC was designed for high bit resolution (18 bit) and a small non-linearity ($\leq2\times10^{-5}$) for measuring small parity violating asymmetries to high precision. From the asymmetry measurement test (Fig.  \ref{fig:Comparison-for-asym}), the bit resolution for the HAPPEX ADCs were much better than the one for the scalers. The integration time of HAPPEX ADCs controlled by the timing board was 875 $\mu s$, a little bit smaller than the helicity period (1041.65 $\mu s$). The HAPPEX ADCs recorded more precise position and current information than the FASTBUS 1881 ADCs (with an integration time less than 50 $ns$ during the experiment). 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.95\linewidth]{pic/asym_diff}
@@ -147,12 +147,12 @@ The flexible IO is used to record the digital information. The baseline signal p
 
 \paragraph{Ring Buffer}
 
-A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible IO to the ringbuffer server in the CPU's register. For more reliable performance and less CPU occupation, a trigger is used instead of checking the pair sync polarity all of the time. The trigger from the flexible IO has the same period as the T-Settle. Each trigger causes the CPU to read out the data from the flexible IO and the ADCs once. A trigger interface controlled by the HRS trigger superviser reads the data from the ringbuffer server to the data-stream. For the online debugging, a TCP-IP server was running on the CPU to readout the data from the ringbuffer from any Linux computer at any time.
+A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible IO to the ringbuffer server in the register of the CPU. For more reliable performance and less CPU occupation, a trigger is used instead of checking the pair sync polarity all of the time. The trigger from the flexible IO has the same period as the T-Settle. Each trigger causes the CPU to read out the data from the flexible IO and the ADCs once. A trigger interface controlled by the HRS trigger superviser reads the data from the ringbuffer server to the data-stream. For the online debugging, a TCP-IP server was running on the CPU to readout the data from the ringbuffer from any Linux computer at any time.
 
 
 \subsection{Tungsten Calorimeter}
 
-A tungsten calorimeter \cite{hacalorimeter} located downstream of the BCMs and the two rasters \cite{Zhu20161} for calibrating the BCMs by measuring the beam induced temperature rise, as shown in Fig.  \ref{fig:Tungsten-Calorimeter}. 
+A tungsten calorimeter \cite{hacalorimeter} was located downstream of the BCMs and the two rasters \cite{Zhu20161} for calibrating the BCMs by measuring the beam induced temperature rise, as shown in Fig.  \ref{fig:Tungsten-Calorimeter}. 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.2\linewidth]{pic/tungsten}
@@ -164,7 +164,7 @@ A tungsten calorimeter \cite{hacalorimeter} located downstream of the BCMs and t
 \end{figure}
  The chamber that holds the tungsten is pumped down to vacuum to minimize heat loss. The tungsten is in three positions for the different purpose: 
 \begin{enumerate}
-\item Beam charging, the tungsten is in the beam pipe. All of the incoming beam electrons hit the tungsten. The temperature is increasing during this period.
+\item Beam charging, the tungsten is in beam position. All of the incoming beam electrons hit the tungsten. The temperature is increasing during this period.
 \item Equilibrating, the tungsten moves out of the beam pipe but doesn't touch the cooling plate. The beam turns off. The temperature stabilizes. The measurement of the temperature occurs in this period.
 \item Cooling, the tungsten moves to the cooling plate to cool down the tungsten.
 \end{enumerate}
