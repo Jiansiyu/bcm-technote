@@ -18,12 +18,14 @@ Modified
 31 : add DC voltage from the BCM receiver
 in order to be readout instead of connect
 replaced switched by selected by jumper
-
+Modified
 
 line 32 : I don't understand what you mean by implement
+Deleted
 
 Put a paragraph describing the helicity structure and delayed helicity
 and after explain what is the ring buffer
+Added
 
 line 43 and 55 : are repeated
 Modified

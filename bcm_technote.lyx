@@ -16,6 +16,7 @@
 
 \usepackage{lineno}
 \linenumbers
+\usepackage{url}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -101,9 +102,9 @@ The g2p/GEp experiments used a solid
  The beam current was limited to 5-100nA during the experiment to avoid
  too much depolarization of target.
  The measured charge was further used to get the accurate physics asymmetries.
- This technical note summarized the method to calibrate the beam charge
- monitors (BCM) for the g2p/GEp experiments, with the devices of tungsten
- calorimeter, new BCM receiver, and DAQ system.
+ This technical note summarizes the method to calibrate the beam charge
+ monitors (BCM) for the g2p/GEp experiments, with the tungsten calorimeter,
+ new BCM receiver, and DAQ system.
 \end_layout
 
 \begin_layout Section
@@ -114,10 +115,15 @@ Hardware
 The BCM system used for the g2p/GEp experiments contains two RF cavities,
  a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
  calorimeter for calibration.
- The Unser monitor was not considered due to noisy signal, and the farady
- cup in injector was not used for calibration due to considerable leakage
- current between the Halls.
+ The Unser monitor was not used because it has an accuracy of 0.5 
+\begin_inset Formula $\mu A$
+\end_inset
+
+ so it is not usable at low current.
+ Farady cup has about same accuracy and loss in the machine needs to be
+ taken into account.
  The location of them is shown in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Beamline"
@@ -193,6 +199,7 @@ key "mussonece652paper"
 
 .
  The design diagram is shown in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BPM-receiver"
@@ -256,9 +263,9 @@ key "mussonece652paper"
 \end_inset
 
 .
- The 20 bit digital signal is converted back to 0-10V analog signal to match
- the existing Hall A DAQ system using a 18 bit DAC.
- A DIV unit is used to intercept the signal from 20 bit to 18 bit by applying
+ The 20-bit digital signal is converted back to 0-10V analog signal to match
+ the existing Hall A DAQ system using a 18-bit DAC.
+ A DIV unit is used to intercept the signal from 20-bit to 18-bit by applying
  an adjustable bit shift.
  More details can be found in 
 \begin_inset CommandInset citation
@@ -277,6 +284,7 @@ Data acquisition system
 \begin_layout Standard
 The BCM data from the receiver was connected to the DAQ system as shown
  in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:daq_bcm"
@@ -331,38 +339,274 @@ DAQ system for BCM
 \end_layout
 
 \begin_layout Subsubsection
-Scaler
+Helicity
 \end_layout
 
 \begin_layout Standard
-The V2F converts the voltage signal to the frequency signal in order to
- connect to the scalers for counting.
- The SIS380x scaler is the VME implement.
- It has two modes switched by a jumber on the board: SIS3800 and SIS3801.
- The SIS3800 scaler counts the charge, clock and trigger signals for each
- event, and delivers them to the data stream when the event trigger is accepted.
- The counter data for the SIS3800 is only cleared at the beginning of the
- run, thus the SIS3800 was used to get the counts for the whole run.
-\end_layout
-
-\begin_layout Standard
-The SIS3801 was used to get the helicity gated information.
- Fig.
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:helicity"
-
-\end_inset
-
- shows the T-Settle signal from the helicity control board 
+The beam is polarized in injector before going to the CEBAF accelerator.
+ The polarization is controlled by a helicity control board (NIM) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "helicityboard"
 
 \end_inset
 
- in injector.
- 
+.
+ The helicity control board generates several signals which relative to
+ each other.
+ It controls the high voltage supply to change the orientation of the polarizati
+on of laser, which is used to generate the polarized electron beam with
+ GaAs photogun by using the method of optical pumping.
+ Meanwhile the helicity control board sends waves to the DAQ system in the
+ Hall in order to get the helicity based information.
+ During the experiment the helicity setting was the same as QWEAK experiment
+ in Hall C, as shown in table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Helicity-configuration"
+
+\end_inset
+
+.
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mode
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Free clock
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-Settle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70 
+\begin_inset Formula $\mu s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-Stable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+971.65 
+\begin_inset Formula $\mu s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Helicity Pattern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+--+$
+\end_inset
+
+ or 
+\begin_inset Formula $-++-$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reporting delay
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8 window
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Helicity board frequency
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+960.015 Hz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Helicity-configuration"
+
+\end_inset
+
+Helicity configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Four waves were sent to Hall during the experiment by fiber, which named
+ T-Settle (or MPS), pattern_sync (or QRT), pair_sync, and delayed helicity
+ (Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:helicity"
+
+\end_inset
+
+).
+ The quartet helicity pattern is used for the experiment to minimize the
+ system error, which is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $+--+$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $-++-$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, one pattern is composed with four helicity windows.
+ The pattern_sync indicates the first window of one pattern.
+ The T-Settle signal is used for judging if helicity is reliable.
+ The high-level T-Settle (70 
+\begin_inset Formula $\mu s$
+\end_inset
+
+) indicates the helicity flips, or has unsure helicity states, while the
+ low-level T-Stable (971.65 
+\begin_inset Formula $\mu s$
+\end_inset
+
+) indicates the reliable helicity states.
+ The pair sync signal flips in each helicity window, which is used as the
+ redundancy information.
+ The helicity flip signal sent to Hall is 8 windows delayed with the real
+ helicity flip signal, and need to be further dealt for use.
+ More details about the helicity decoder can be found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chaohelicity"
+
+\end_inset
+
+.
 \begin_inset Float figure
 wide false
 sideways false
@@ -371,9 +615,9 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pic/helicity.png
+	filename pic/helicitysignal.png
 	lyxscale 40
-	width 80col%
+	width 90col%
 
 \end_inset
 
@@ -390,15 +634,8 @@ name "fig:helicity"
 
 \end_inset
 
-T-Settle signal from helicity control board, with 971.65 
-\begin_inset Formula $\mu s$
-\end_inset
-
- T-Stable time and 
-\begin_inset Formula $70\mu s$
-\end_inset
-
- T-Settle time.
+Helicity signal from helicity control board.
+ 
 \end_layout
 
 \end_inset
@@ -408,21 +645,154 @@ T-Settle signal from helicity control board, with 971.65
 
 \end_inset
 
- The high-level T-Settle (70 
-\begin_inset Formula $\mu s$
+
+\end_layout
+
+\begin_layout Subsubsection
+Scaler
+\end_layout
+
+\begin_layout Standard
+The V2F converts the DC voltage from the BCM receiver to the frequency signal
+ in order to readout the scalers for counting.
+ The SIS380x scaler has two modes selected by a jumper on the board: SIS3800
+ and SIS3801.
+ 
+\end_layout
+
+\begin_layout Paragraph
+SIS3800 scaler
+\end_layout
+
+\begin_layout Standard
+The SIS3800 scaler counts the charge, clock and trigger signals for each
+ event, and delivers them to the data stream when the event trigger is accepted.
+ The counter data for the SIS3800 is only cleared at the beginning of the
+ run, thus the SIS3800 is used to get the counts for the whole run.
+\end_layout
+
+\begin_layout Paragraph
+SIS3801 scaler
+\end_layout
+
+\begin_layout Standard
+The SIS3801 is used to get the helicity gated information.
+ Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sis3801-workflow"
+
 \end_inset
 
-) indicates the helicity flips, or has unsure helicity status, while the
- low-level T-Stable (971.65 
-\begin_inset Formula $\mu s$
+ shows the workflow of the SIS3801 scaler 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pic/sis3801_workflow.png
+	lyxscale 40
+	width 70col%
+
 \end_inset
 
-) indicates the reliable helicity status.
- The rising edge of the T-Settle triggers the scaler to save the current
- counts to the FIFO register, stop the counter and reset the counts.
- The flipping edge of the T-Settle recovers the counting.
- The FIFO register is used as a ringbuffer before merging to the standard
- DAQ system.
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sis3801-workflow"
+
+\end_inset
+
+Workflow of the SIS3801 scaler 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chaohelicity"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ The scaler is controlled by the T-Settle signal.
+ The data registers count the charge, clock and trigger signals only in
+ the T-Stable part of the helicity window.
+ The counts are reset by the high-level T-Settle.
+ A delayed T-Settle, the Pattern Sync, and the delayed helicity are also
+ sent to the control register.
+ Those information are saved in the FIFO (First-In-First-Out) register triggered
+ by the delayed T-Settle signal.
+ The FIFO is used as a ringbuffer (Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ringbuffer"
+
+\end_inset
+
+) before merging to the standard DAQ system.
+ 
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../thesis/pic/ringbuffer2.png
+	lyxscale 20
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ringbuffer"
+
+\end_inset
+
+Workflow of the ringbuffer.
+ The ringbuffer is used as the buffer merging from the data-stream of the
+ helicity triggered DAQ to the physics triggered DAQ.
+ For the SIS3801 scaler, the FIFO register is used as the ringbuffer.
+ For the HAPPEX DAQ, an array defined in the CPU register is used as the
+ ringbuffer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -449,7 +819,7 @@ key "ADC18bob"
 
 \end_inset
 
-, a flexible IO (FLEXIO,NIM) 
+, a flexible IO (FLEXIO, NIM) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "flexioEd"
@@ -458,6 +828,7 @@ key "flexioEd"
 
 , a trigger interface module (TI), and a VxWorks CPU.
  The diagram of HAPPEX DAQ is shown in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Happex-DAQ-diagram-1"
@@ -512,9 +883,10 @@ Timing board
 \begin_layout Standard
 The timing board generates several time signals to control the start and
  stop integration time of the ADCs.
- The T-Settle signal was used as the trigger source for the timing board.
+ The T-Settle signal is used as the trigger source for the timing board.
  Based on the trigger signal, the timing board generates a set of signals
  (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Timing-board-signals-1"
@@ -591,13 +963,14 @@ HAPPEX ADC
 \end_layout
 
 \begin_layout Standard
-The HAPPEX ADC was designed for high bit resolution (18 bit) and a small
+The HAPPEX ADC is designed for high bit resolution (18-bit) and a small
  non-linearity (
 \begin_inset Formula $\leq2\times10^{-5}$
 \end_inset
 
 ) for measuring small parity violating asymmetries to high precision.
  From the asymmetry measurement test (Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Comparison-for-asym"
@@ -606,8 +979,8 @@ reference "fig:Comparison-for-asym"
 
 ), the bit resolution for the HAPPEX ADCs were much better than the one
  for the scalers.
- The integration time of HAPPEX ADCs controlled by the timing board was
- 875 
+ The integration time of the HAPPEX ADCs controlled by the timing board
+ is 875 
 \begin_inset Formula $\mu s$
 \end_inset
 
@@ -616,8 +989,8 @@ reference "fig:Comparison-for-asym"
 \end_inset
 
 ).
- The HAPPEX ADCs recorded more precise position and current information
- than the FASTBUS 1881 ADCs (with an integration time less than 50 
+ The HAPPEX ADCs record more precise position and current information than
+ the FASTBUS 1881 ADCs (with an integration time less than 50 
 \begin_inset Formula $ns$
 \end_inset
 
@@ -694,16 +1067,28 @@ Ring Buffer
 
 \begin_layout Standard
 A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible
- IO to the ringbuffer server in the register of the CPU.
+ IO to the ringbuffer server in the CPU.
+ The ringbuffer is an array saved in the register of the CPU.
+ Each element in array includes the information of helicity, charge, clock
+ signals for this helicity states (Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ringbuffer"
+
+\end_inset
+
+).
  For more reliable performance and less CPU occupation, a trigger is used
  instead of checking the pair sync polarity all of the time.
  The trigger from the flexible IO has the same period as the T-Settle.
  Each trigger causes the CPU to read out the data from the flexible IO and
  the ADCs once.
- A trigger interface controlled by the HRS trigger superviser reads the
+ A trigger interface controlled by the HRS trigger supervisor reads the
  data from the ringbuffer server to the data-stream.
  For the online debugging, a TCP-IP server was running on the CPU to readout
  the data from the ringbuffer from any Linux computer at any time.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -718,7 +1103,7 @@ key "hacalorimeter"
 
 \end_inset
 
- located downstream of the BCMs and the two rasters 
+ is located downstream of the BCMs and the two rasters 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Zhu20161"
@@ -727,6 +1112,7 @@ key "Zhu20161"
 
  for calibrating the BCMs by measuring the beam induced temperature rise,
  as shown in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Tungsten-Calorimeter"
@@ -834,17 +1220,18 @@ There were two types of clocks: fast clock and slow clock.
 \begin_inset Formula $\sim$
 \end_inset
 
-103.7 KHz, while the frequency of the slow clock was 
+ 103.7 KHz, while the frequency of the slow clock was 
 \begin_inset Formula $\sim$
 \end_inset
 
-1KHz.
+ 1 KHz.
  The pedestal value is related to the frequency of the clock signal, thus
  the calibration constants for them are different.
 \end_layout
 
 \begin_layout Standard
 A complete calibration period is shown in Fig.
+  
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BCM-Calibration"
@@ -879,9 +1266,9 @@ name "fig:BCM-Calibration"
 
 \end_inset
 
-BCM Calibration, the first two pictures are the temperature arise of the
- RTDs, the last four pictures are the counts recorded in different devices
- at the same time.
+BCM Calibration, the top left and right figures are the temperature rise
+ of the RTDs, the last four plots show the counts recorded in the scalers
+ and the HAPPEX ADCs at the same time.
 \end_layout
 
 \end_inset
@@ -924,6 +1311,14 @@ key "tungstenelog"
 
 .
  The result is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Tungsten-calorimeter-heat"
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -977,13 +1372,13 @@ key "tungstenelog"
 \begin_inset Formula $T$
 \end_inset
 
- is the average temperature from 6 RTDs.
+ is the average temperature from the 6 RTDs.
  
 \end_layout
 
 \begin_layout Standard
-There are several devices needed to be calibrated, each one has it's own
- special condition.
+There are several devices needed to be calibrated, and each one has its
+ own special condition.
  The detail calibration procedures for each device are as follows.
 \end_layout
 
@@ -992,25 +1387,27 @@ Calibration for SIS3800 scaler
 \end_layout
 
 \begin_layout Standard
-A reset signal was sent to the SIS3800 scaler at the beginning of run to
- clear the counts.
+A reset signal was sent to the SIS3800 scaler at the beginning of the run
+ to clear the counts.
  Since the scaler was found to cause high deadtime, only clock signals were
- sampled for each event, others were sampled for each 1000 events.
+ sampled for each event, while other signals were sampled for each 1000
+ events.
  Also the DAQ read the scaler once at the end of the run.
  
 \end_layout
 
 \begin_layout Standard
-The third picture in Fig.
+The middle left picture in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:BCM-Calibration"
 
 \end_inset
 
- is for SIS3800 calibration.
- The steep range is the period when the beam come, corresponding to the
- steep range in the first picture.
+ is for the SIS3800 calibration.
+ The rise in the graph is the period when the beam hits the tungsten, correspond
+ing to the rise in the top left.
  The total charge has the following relation with the counts:
 \end_layout
 
@@ -1035,13 +1432,13 @@ where
 \begin_inset Formula $ped$
 \end_inset
 
- is the pedestal value which is calculated from the first-order polynomial
+ is the pedestal value, which is calculated from the first-order polynomial
  fits before and after the beam.
  To get the 
 \begin_inset Formula $slope$
 \end_inset
 
- value, two time points are chosen before and after the beam.
+ value, two time points are chosen before and after the beam heats the tungsten.
  Using the 
 \begin_inset Formula $\Delta counts$
 \end_inset
@@ -1055,7 +1452,7 @@ where
 \begin_inset Formula $slope$
 \end_inset
 
- value is then calculated.
+ value is then determined.
 \end_layout
 
 \begin_layout Standard
@@ -1078,7 +1475,7 @@ where
 \begin_inset Formula $clockrate$
 \end_inset
 
- are defined as the bcm counts and clock counts per second.
+ are defined as the BCM counts per second and clock counts per second.
 \end_layout
 
 \begin_layout Subsection
@@ -1087,7 +1484,7 @@ Calibration for SIS3801 scaler
 
 \begin_layout Standard
 To calibrate the SIS3801 scaler it is necessary to accumulate all of the
- counts for each helicity window, which needs no data lost.
+ counts for each helicity window without any loss of data.
  There are two methods to get the total counts.
  One is using the sum counts from two virtual scalers.
  The offline analyzer 
@@ -1097,12 +1494,12 @@ key "analyzer"
 
 \end_inset
 
- automatically accumulates the total counts for positive helicity status
- and negative helicity status, which present two independent variables (positive
+ automatically accumulates the total counts for positive helicity states
+ and negative helicity states, which present two independent variables (positive
  and negative virtual scaler) in the raw data.
  Another is accumulating all of the counts from the ringbuffer.
  The helicity decoder was used to check if data were lost.
- The calculated calibration constants are same from two methods.
+ The calculated calibration constants are the same from the two methods.
  Further procedures are same as the SIS3800.
  The total charge has the following relation with the counts:
 \end_layout
@@ -1124,7 +1521,7 @@ where the
 \end_inset
 
  are counted from the SIS3801 scaler.
- Since the SIS3801 is not counting in 70 
+ Since the SIS3801 does not count for 70 
 \begin_inset Formula $\mu s$
 \end_inset
 
@@ -1132,7 +1529,8 @@ where the
 \begin_inset Formula $\mu s$
 \end_inset
 
-, the slope calculated for SIS3801 are larger than the slope for SIS3800.
+, the slopes calculated for the SIS3801 are larger than the slope for the
+ SIS3800.
  The beam current is calculated as:
 \end_layout
 
@@ -1165,8 +1563,8 @@ Calibration for HAPPEX ADC
 
 \begin_layout Standard
 To calibrate the HAPPEX ADC, the values are accumulated for all of the events
- between two time points as the total counts.
- The entries in the HAPPEX DAQ is used as the time stamp.
+ between two time periods as the total counts.
+ The entries in the HAPPEX DAQ are used as the time stamp.
  The total charge has the following relation with the counts:
 \end_layout
 
@@ -1202,19 +1600,26 @@ Uncertainty
 \end_layout
 
 \begin_layout Standard
-The uncertainty of the calculated charge from tungsten comes from the beam
- energy, RTD, measured tungsten heat capacity, and the heat loss.
- The accuracy of the beam energy calculated from Arc measurement is 0.2 MeV
- in the range of 0.5 to 6 GeV
+The uncertainty of the calculated charge from the tungsten calorimeter comes
+ from the beam energy, RTD, measured tungsten heat capacity, and the heat
+ loss.
+ The accuracy of the beam energy calculated from the ARC measurement 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hallanim"
+
+\end_inset
+
+ is 0.2 MeV in the range of 0.5 to 6 GeV 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "arcmeasurepage"
 
 \end_inset
 
-, which contributes the uncertainty of calculated charge of 0.34 nC per 1
- K temperature rise (2.2 GeV beam energy).
- The uncertainties of the RTDs are 12.5 mK
+, which contributes to the uncertainty of calculated charge of 0.34 nC per
+ 1 K temperature rise (2.2 GeV beam energy).
+ The uncertainties of the RTDs are 12.5 mK 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "calorimeterrtd"
@@ -1225,7 +1630,7 @@ key "calorimeterrtd"
 \begin_inset Formula $0.046\,\mu C$
 \end_inset
 
- (2.2GeV beam energy).
+ (2.2 GeV beam energy).
  The 
 \begin_inset Formula $50\,J/K$
 \end_inset
@@ -1234,9 +1639,13 @@ key "calorimeterrtd"
 \begin_inset Formula $0.18\,\mu C$
 \end_inset
 
- per 1 K temperature rise (2.2GeV beam energy).
+ per 1 K temperature rise (2.2 GeV beam energy).
  The Hall A calorimeter thermal and mechanical design limits heat losses
- to the ~ 0.2 % level if the measurement within 20 min
+ to the 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 0.2 % level if the measurement within 20 min
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hacalorimeter"
@@ -1244,18 +1653,23 @@ key "hacalorimeter"
 \end_inset
 
 , which causes the uncertainty of calculated charge additional 0.2 %.
- The total uncertainty is ~ 0.68 % for the calculated charge from tungsten.
+ The total uncertainty is 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 0.68 % for the calculated charge from tungsten.
 \end_layout
 
 \begin_layout Standard
-By comparing of the difference between upstream and downstream BCM, the
- fluctuations between upstream and downstream are below 
+By comparing the difference between the upstream and downstream BCMs, the
+ fluctuations between the two are below 
 \begin_inset Formula $0.19\:\mu C$
 \end_inset
 
  for 90 % runs.
- The relative differences between them for 90 % runs are below 0.7 %, as
- shown in Fig.
+ The relative differences between them for 90 % of runs are below 0.7 %,
+ as shown in Fig.
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Comparingud"
@@ -1266,7 +1680,7 @@ reference "fig:Comparingud"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1350,9 +1764,9 @@ name "fig:Comparingud"
 
 \end_inset
 
-Comparing of the charge calculated from upstream and downstream.
- Each event in picture is the total charge calculated from one run from
- experiment.
+Comparison of the charge calculated from the upstream and downstream BCMs.
+ Each entry in the graph is the total charge calculated from each run from
+ the experiment.
 \end_layout
 
 \end_inset
@@ -1364,8 +1778,65 @@ Comparing of the charge calculated from upstream and downstream.
 
 .
  The differences indicate the uncertainty of the BCM is below 0.7 %.
- Combining with the uncertainty of the tungsten calorimeter, the final uncertain
-ty of BCM is below 1 %.
+ Combined with the uncertainty of the tungsten calorimeter, the final uncertaint
+y of BCMs is below 1 %.
+\end_layout
+
+\begin_layout Standard
+Fig.
+  
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:BCM-timestab"
+
+\end_inset
+
+ shows the stability of the calibration with time during 3/13/2012 - 5/18/2012.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pic/timestab.png
+	lyxscale 20
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:BCM-timestab"
+
+\end_inset
+
+BCM calibration constants change during 3/13/2012 - 5/18/2012.
+ The blue dot is for upstream BCM, and the green dot is for downstream BCM
+ (recorded in the SIS3800 scaler in right arm).
+ The x axis is the calibration date, while the y axis is the slope recorded
+ in the Appendix (SIS3800).
+ The constants were changed in Apr.2 and Apr.19.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The fluctuation of the calibration constants was below 1% in one month.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1373,36 +1844,36 @@ Calibration constants
 \end_layout
 
 \begin_layout Standard
-The calibration constants are shown in appendix.
+The calibration constants are shown in the Appendix Tables 1-9.
  Some specials are listed below:
 \end_layout
 
 \begin_layout Itemize
-~Mar.17 3rm downstream scaler abnormal
+Begin - Mar.17 3rm downstream scaler abnormal
 \end_layout
 
 \begin_layout Itemize
-Mar.18~Apr.2 left arm upstream scaler noisy
+Mar.18 - Apr.2 Left arm upstream scaler noisy
 \end_layout
 
 \begin_layout Itemize
-Apr.2~Apr.9 right arm SIS3801 not working
+Apr.2 - Apr.9 Right arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
-Apr.9 changed right arm scaler channel for bcm
+Apr.9 Changed right arm scaler channel for bcm
 \end_layout
 
 \begin_layout Itemize
-Apr.19~ calibration constant changed
+Apr.19 -  Calibration constant changed
 \end_layout
 
 \begin_layout Itemize
-Near May.12 third arm SIS3801 not working
+Near May.12 Third arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
-May.13~May.14 downstream bcm broken
+May.13 - May.14 Downstream bcm broken
 \end_layout
 
 \begin_layout Standard
@@ -1427,47 +1898,47 @@ Mag_Filter_K
 \end_layout
 
 \begin_layout Itemize
-~Mar.2 18:39:42 gain changing
+Begin - Mar.2 18:39:42 Gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.2 18:39:43~Mar.5 10:00:12 10/10/1 9/9/1 3 4
+Mar.2 18:39:43 - Mar.5 10:00:12 10/10/1 9/9/1 3 4
 \end_layout
 
 \begin_layout Itemize
-Mar.5 10:00:13~Mar.5 10:27:40 gain changing 
+Mar.5 10:00:13 - Mar.5 10:27:40 Gain changing 
 \end_layout
 
 \begin_layout Itemize
-Mar.5 10:27:41~Mar.6 8:51:39 10/10/1 9/9/1 1 4
+Mar.5 10:27:41 - Mar.6 8:51:39 10/10/1 9/9/1 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.6 8:51:40~Mar.6 13:45:43 10/13/1 9/9/1 1 4
+Mar.6 8:51:40 - Mar.6 13:45:43 10/13/1 9/9/1 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.6 13:45:44~Mar.6 13:49:05 gain changing
+Mar.6 13:45:44 - Mar.6 13:49:05 Gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.6 13:49:06~Mar.7 17:20:10 29/30/4 27/27/4 1 4
+Mar.6 13:49:06 - Mar.7 17:20:10 29/30/4 27/27/4 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.7 17:20:11~Mar.7 17:23:25 gain changing
+Mar.7 17:20:11 - Mar.7 17:23:25 Gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.7 17:23:25~Mar.10 13:12:53 29/30/4 27/27/4 1 4
+Mar.7 17:23:25 - Mar.10 13:12:53 29/30/4 27/27/4 1 4
 \end_layout
 
 \begin_layout Itemize
-Mar.10 13:12:54~Mar.10 13:33:15 gain changing
+Mar.10 13:12:54 - Mar.10 13:33:15 Gain changing
 \end_layout
 
 \begin_layout Itemize
-Mar.10 13:33:16~end 40/41/4 40/43/4 1 4 
+Mar.10 13:33:16 - end 40/41/4 40/43/4 1 4 
 \end_layout
 
 \begin_layout Standard
@@ -1631,7 +2102,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -1771,7 +2242,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -1907,7 +2378,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for left arm} 
+caption{BCM calibration constants for the left arm} 
 \backslash
 end{table} 
 \backslash
@@ -2048,7 +2519,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2189,7 +2660,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2328,7 +2799,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for right arm} 
+caption{BCM calibration constants for the right arm} 
 \backslash
 end{table} 
 \backslash
@@ -2424,7 +2895,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash
@@ -2520,7 +2991,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash
@@ -2613,7 +3084,7 @@ end{tabular}
 \backslash
 protect
 \backslash
-caption{BCM calibration constant for third arm} 
+caption{BCM calibration constants for the third arm} 
 \backslash
 end{table} 
 \backslash

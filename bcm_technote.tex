@@ -8,6 +8,11 @@
 \usepackage{graphicx}
 
 \makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{epsfig}
 \usepackage{lscape}
@@ -21,6 +26,7 @@
 
 \usepackage{lineno}
 \linenumbers
+\usepackage{url}
 
 \@ifundefined{showcaptionsetup}{}{%
  \PassOptionsToPackage{caption=false}{subfig}}
@@ -36,12 +42,12 @@
 \author{Pengjia Zhu}
 \maketitle
 \begin{abstract}
-The g2p/GEp experiments used a solid $\mathrm{NH_{3}}$ polarized target, where the polarization of the target is sensitive to temperature and radiation. The beam current was limited to 5-100nA during the experiment to avoid too much depolarization of target. The measured charge was further used to get the accurate physics asymmetries. This technical note summarizes the method to calibrate the beam charge monitors (BCM) for the g2p/GEp experiments, with the devices of tungsten calorimeter, new BCM receiver, and DAQ system.
+The g2p/GEp experiments used a solid $\mathrm{NH_{3}}$ polarized target, where the polarization of the target is sensitive to temperature and radiation. The beam current was limited to 5-100nA during the experiment to avoid too much depolarization of target. The measured charge was further used to get the accurate physics asymmetries. This technical note summarizes the method to calibrate the beam charge monitors (BCM) for the g2p/GEp experiments, with the tungsten calorimeter, new BCM receiver, and DAQ system.
 \end{abstract}
 
 \section{Hardware}
 
-The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. Unser was not used because it has an accuracy of 0.5 uA so it is not usable at low current. Farady cup has about same accuracy and loss in the machine needs to be taken into account. The location of them is shown in Fig.  \ref{fig:Beamline}.
+The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. The Unser monitor was not used because it has an accuracy of 0.5 $\mu A$ so it is not usable at low current. Farady cup has about same accuracy and loss in the machine needs to be taken into account. The location of them is shown in Fig. \ref{fig:Beamline}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/beamline_lite}
@@ -56,7 +62,7 @@ The BCM system used for the g2p/GEp experiments contains two RF cavities, a BCM 
 
 \subsection{BCM receiver}
 
-Since the original RMS-to-DC converter \cite{Denard2001} did not work at low current, a new BCM receiver was designed by John Musson and his colleagues from the JLab instrumentation group for the purpose of achieving a reasonable signal/noise (S/N) ratio in the beam current environment a range of several nanoampere to several micro-ampere \cite{mussonece652paper}. The design diagram is shown in Fig.  \ref{fig:BPM-receiver}.
+Since the original RMS-to-DC converter \cite{Denard2001} did not work at low current, a new BCM receiver was designed by John Musson and his colleagues from the JLab instrumentation group for the purpose of achieving a reasonable signal/noise (S/N) ratio in the beam current environment a range of several nanoampere to several micro-ampere \cite{mussonece652paper}. The design diagram is shown in Fig. \ref{fig:BPM-receiver}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/receiver}
@@ -66,12 +72,12 @@ Since the original RMS-to-DC converter \cite{Denard2001} did not work at low cur
 \end{figure}
  
 
-The receiver consists of an analog part and a digital part. The analog part includes the amplifier and the mixer. The multiply mixer converts the ratio frequency (RF) signal to the intermediate frequency (IF) signal. The signal is digitized by a 36 MSPS ADC, and applied by a cascaded-integrator\textendash comb (CIC) filter and an infinite-inpulse-response (IIR) filter (10.4 kHz). The CORDIC system is used to get the amplitude and phase of the digital signal \cite{mussonece652paper}. The 20 bit digital signal is converted back to 0-10V analog signal to match the existing Hall A DAQ system using a 18 bit DAC. A DIV unit is used to intercept the signal from 20 bit to 18 bit by applying an adjustable bit shift. More details can be found in \cite{mussonece652paper}.
+The receiver consists of an analog part and a digital part. The analog part includes the amplifier and the mixer. The multiply mixer converts the ratio frequency (RF) signal to the intermediate frequency (IF) signal. The signal is digitized by a 36 MSPS ADC, and applied by a cascaded-integrator\textendash comb (CIC) filter and an infinite-inpulse-response (IIR) filter (10.4 kHz). The CORDIC system is used to get the amplitude and phase of the digital signal \cite{mussonece652paper}. The 20-bit digital signal is converted back to 0-10V analog signal to match the existing Hall A DAQ system using a 18-bit DAC. A DIV unit is used to intercept the signal from 20-bit to 18-bit by applying an adjustable bit shift. More details can be found in \cite{mussonece652paper}.
 
 
 \subsection{Data acquisition system}
 
-The BCM data from the receiver was connected to the DAQ system as shown in Fig.  \ref{fig:daq_bcm}.
+The BCM data from the receiver was connected to the DAQ system as shown in Fig. \ref{fig:daq_bcm}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.8\linewidth]{pic/bcm_daq}
@@ -84,26 +90,80 @@ The BCM data from the receiver was connected to the DAQ system as shown in Fig. 
  The voltage signal from receiver was split and sent to the Voltage to Frequency (V2F) module and the HAPPEX ADC. 
 
 
-\subsubsection{Scaler}
+\subsubsection{Helicity}
 
-The V2F converts the voltage signal to the frequency signal in order to connect to the scalers for counting. The SIS380x scaler is the VME implement. It has two modes switched by a jumber on the board: SIS3800 and SIS3801. The SIS3800 scaler counts the charge, clock and trigger signals for each event, and delivers them to the data stream when the event trigger is accepted. The counter data for the SIS3800 is only cleared at the beginning of the run, thus the SIS3800 was used to get the counts for the whole run.
-
-The SIS3801 was used to get the helicity gated information. Fig.  \ref{fig:helicity} shows the T-Settle signal from the helicity control board \cite{helicityboard} in injector. 
-\begin{figure}
+The beam is polarized in injector before going to the CEBAF accelerator. The polarization is controlled by a helicity control board (NIM) \cite{helicityboard}. The helicity control board generates several signals which relative to each other. It controls the high voltage supply to change the orientation of the polarization of laser, which is used to generate the polarized electron beam with GaAs photogun by using the method of optical pumping. Meanwhile the helicity control board sends waves to the DAQ system in the Hall in order to get the helicity based information. During the experiment the helicity setting was the same as QWEAK experiment in Hall C, as shown in table \ref{tab:Helicity-configuration}.
+\begin{table}
 \begin{centering}
-\includegraphics[width=0.8\columnwidth]{pic/helicity}
+\begin{tabular}{|c|c|}
+\hline 
+Mode & Free clock\tabularnewline
+\hline 
+\hline 
+T-Settle & 70 $\mu s$\tabularnewline
+\hline 
+T-Stable & 971.65 $\mu s$\tabularnewline
+\hline 
+Helicity Pattern & $+--+$ or $-++-$\tabularnewline
+\hline 
+Reporting delay & 8 window\tabularnewline
+\hline 
+Helicity board frequency & 960.015 Hz\tabularnewline
+\hline 
+\end{tabular}
 \par\end{centering}
 
-\caption{\label{fig:helicity}T-Settle signal from helicity control board, with 971.65 $\mu s$ T-Stable time and $70\mu s$ T-Settle time.}
+\caption{\label{tab:Helicity-configuration}Helicity configuration}
+\end{table}
+
+
+Four waves were sent to Hall during the experiment by fiber, which named T-Settle (or MPS), pattern\_sync (or QRT), pair\_sync, and delayed helicity (Fig.  \ref{fig:helicity}). The quartet helicity pattern is used for the experiment to minimize the system error, which is ``$+--+$'' or ``$-++-$'', one pattern is composed with four helicity windows. The pattern\_sync indicates the first window of one pattern. The T-Settle signal is used for judging if helicity is reliable. The high-level T-Settle (70 $\mu s$) indicates the helicity flips, or has unsure helicity states, while the low-level T-Stable (971.65 $\mu s$) indicates the reliable helicity states. The pair sync signal flips in each helicity window, which is used as the redundancy information. The helicity flip signal sent to Hall is 8 windows delayed with the real helicity flip signal, and need to be further dealt for use. More details about the helicity decoder can be found in \cite{chaohelicity}.
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.9\columnwidth]{pic/helicitysignal}
+\par\end{centering}
+
+\caption{\label{fig:helicity}Helicity signal from helicity control board. }
 \end{figure}
- The high-level T-Settle (70 $\mu s$) indicates the helicity flips, or has unsure helicity status, while the low-level T-Stable (971.65 $\mu s$) indicates the reliable helicity status. The rising edge of the T-Settle triggers the scaler to save the current counts to the FIFO register, stop the counter and reset the counts. The flipping edge of the T-Settle recovers the counting. The FIFO register is used as a ringbuffer before merging to the standard DAQ system.
+
+
+
+\subsubsection{Scaler}
+
+The V2F converts the DC voltage from the BCM receiver to the frequency signal in order to readout the scalers for counting. The SIS380x scaler has two modes selected by a jumper on the board: SIS3800 and SIS3801. 
+
+
+\paragraph{SIS3800 scaler}
+
+The SIS3800 scaler counts the charge, clock and trigger signals for each event, and delivers them to the data stream when the event trigger is accepted. The counter data for the SIS3800 is only cleared at the beginning of the run, thus the SIS3800 is used to get the counts for the whole run.
+
+
+\paragraph{SIS3801 scaler}
+
+The SIS3801 is used to get the helicity gated information. Fig.  \ref{fig:sis3801-workflow} shows the workflow of the SIS3801 scaler 
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.7\columnwidth]{pic/sis3801_workflow}
+\par\end{centering}
+
+\caption{\label{fig:sis3801-workflow}Workflow of the SIS3801 scaler \cite{chaohelicity} }
+\end{figure}
+. The scaler is controlled by the T-Settle signal. The data registers count the charge, clock and trigger signals only in the T-Stable part of the helicity window. The counts are reset by the high-level T-Settle. A delayed T-Settle, the Pattern Sync, and the delayed helicity are also sent to the control register. Those information are saved in the FIFO (First-In-First-Out) register triggered by the delayed T-Settle signal. The FIFO is used as a ringbuffer (Fig.  \ref{fig:Ringbuffer}) before merging to the standard DAQ system. 
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=0.8\linewidth]{../thesis/pic/ringbuffer2}
+\par\end{centering}
+
+\caption{\label{fig:Ringbuffer}Workflow of the ringbuffer. The ringbuffer is used as the buffer merging from the data-stream of the helicity triggered DAQ to the physics triggered DAQ. For the SIS3801 scaler, the FIFO register is used as the ringbuffer. For the HAPPEX DAQ, an array defined in the CPU register is used as the ringbuffer.}
+\end{figure}
+
 
 
 \subsubsection{HAPPEX DAQ}
 
 The HAPPEX DAQ were designed for the parity violation experiments. This DAQ was reprogrammed and reassembled for the g2p/GEp experiments.
 
-The HAPPEX DAQ contains a timing board (NIM) \cite{timingboard}, several 18-bit ADCs \cite{ADC18bob}, a flexible IO (FLEXIO,NIM) \cite{flexioEd}, a trigger interface module (TI), and a VxWorks CPU. The diagram of HAPPEX DAQ is shown in Fig.  \ref{fig:Happex-DAQ-diagram-1}.
+The HAPPEX DAQ contains a timing board (NIM) \cite{timingboard}, several 18-bit ADCs \cite{ADC18bob}, a flexible IO (FLEXIO, NIM) \cite{flexioEd}, a trigger interface module (TI), and a VxWorks CPU. The diagram of HAPPEX DAQ is shown in Fig. \ref{fig:Happex-DAQ-diagram-1}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\columnwidth]{../thesis/pic/happex}
@@ -116,7 +176,7 @@ The HAPPEX DAQ contains a timing board (NIM) \cite{timingboard}, several 18-bit 
 
 \paragraph{Timing board}
 
-The timing board generates several time signals to control the start and stop integration time of the ADCs. The T-Settle signal was used as the trigger source for the timing board. Based on the trigger signal, the timing board generates a set of signals (Fig.  \ref{fig:Timing-board-signals-1}). The reset signal controls the ADC integration. The delay time between the baseline signal and the peak signal is used as the integration time, and the digital value difference between them is used as integrated result. The DAC module in the timing board was used as a debugging source during the experiment.
+The timing board generates several time signals to control the start and stop integration time of the ADCs. The T-Settle signal is used as the trigger source for the timing board. Based on the trigger signal, the timing board generates a set of signals (Fig. \ref{fig:Timing-board-signals-1}). The reset signal controls the ADC integration. The delay time between the baseline signal and the peak signal is used as the integration time, and the digital value difference between them is used as integrated result. The DAC module in the timing board was used as a debugging source during the experiment.
 \begin{figure}[H]
 \begin{centering}
 \includegraphics[width=0.9\linewidth]{../thesis/pic/timing_board}
@@ -129,7 +189,7 @@ The timing board generates several time signals to control the start and stop in
 
 \paragraph{HAPPEX ADC}
 
-The HAPPEX ADC was designed for high bit resolution (18 bit) and a small non-linearity ($\leq2\times10^{-5}$) for measuring small parity violating asymmetries to high precision. From the asymmetry measurement test (Fig.  \ref{fig:Comparison-for-asym}), the bit resolution for the HAPPEX ADCs were much better than the one for the scalers. The integration time of HAPPEX ADCs controlled by the timing board was 875 $\mu s$, a little bit smaller than the helicity period (1041.65 $\mu s$). The HAPPEX ADCs recorded more precise position and current information than the FASTBUS 1881 ADCs (with an integration time less than 50 $ns$ during the experiment). 
+The HAPPEX ADC is designed for high bit resolution (18-bit) and a small non-linearity ($\leq2\times10^{-5}$) for measuring small parity violating asymmetries to high precision. From the asymmetry measurement test (Fig. \ref{fig:Comparison-for-asym}), the bit resolution for the HAPPEX ADCs were much better than the one for the scalers. The integration time of the HAPPEX ADCs controlled by the timing board is 875 $\mu s$, a little bit smaller than the helicity period (1041.65 $\mu s$). The HAPPEX ADCs record more precise position and current information than the FASTBUS 1881 ADCs (with an integration time less than 50 $ns$ during the experiment). 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.95\linewidth]{pic/asym_diff}
@@ -147,12 +207,12 @@ The flexible IO is used to record the digital information. The baseline signal p
 
 \paragraph{Ring Buffer}
 
-A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible IO to the ringbuffer server in the register of the CPU. For more reliable performance and less CPU occupation, a trigger is used instead of checking the pair sync polarity all of the time. The trigger from the flexible IO has the same period as the T-Settle. Each trigger causes the CPU to read out the data from the flexible IO and the ADCs once. A trigger interface controlled by the HRS trigger superviser reads the data from the ringbuffer server to the data-stream. For the online debugging, a TCP-IP server was running on the CPU to readout the data from the ringbuffer from any Linux computer at any time.
+A VxWorks CPU controls the data reading from the HAPPEX ADCs and the flexible IO to the ringbuffer server in the CPU. The ringbuffer is an array saved in the register of the CPU. Each element in array includes the information of helicity, charge, clock signals for this helicity states (Fig.  \ref{fig:Ringbuffer}). For more reliable performance and less CPU occupation, a trigger is used instead of checking the pair sync polarity all of the time. The trigger from the flexible IO has the same period as the T-Settle. Each trigger causes the CPU to read out the data from the flexible IO and the ADCs once. A trigger interface controlled by the HRS trigger supervisor reads the data from the ringbuffer server to the data-stream. For the online debugging, a TCP-IP server was running on the CPU to readout the data from the ringbuffer from any Linux computer at any time. 
 
 
 \subsection{Tungsten Calorimeter}
 
-A tungsten calorimeter \cite{hacalorimeter} was located downstream of the BCMs and the two rasters \cite{Zhu20161} for calibrating the BCMs by measuring the beam induced temperature rise, as shown in Fig.  \ref{fig:Tungsten-Calorimeter}. 
+A tungsten calorimeter \cite{hacalorimeter} is located downstream of the BCMs and the two rasters \cite{Zhu20161} for calibrating the BCMs by measuring the beam induced temperature rise, as shown in Fig. \ref{fig:Tungsten-Calorimeter}. 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.2\linewidth]{pic/tungsten}
@@ -175,9 +235,9 @@ For the temperature measurement, six resistance temperature detectors (RTDs) are
 
 Calibration data were taken several times during the experiment. In order to achieve the uniform heat load from the beam over the tungsten surface, the rasters were turned on during the BCM calibration. The limited size of the ringbuffer caused potential loss of data when the read-out speed was lower than the read-in speed. For the deadtime consideration, the DAQ system only read out no more than 50 sets data from the ringbuffer. An additional clock trigger with a frequency larger than 20 Hz ($\geqq$ 960 (helicity frequency) / 50) was added to avoid data loss in the ringbuffer recorded in the data-stream. The clock signal was needed for calculating the pedestal of the scaler and the ADC. For the HAPPEX ADC, the helicity entries was used as the clock. 
 
-There were two types of clocks: fast clock and slow clock. The frequency of the fast clock was $\sim$103.7 KHz, while the frequency of the slow clock was $\sim$1KHz. The pedestal value is related to the frequency of the clock signal, thus the calibration constants for them are different.
+There were two types of clocks: fast clock and slow clock. The frequency of the fast clock was $\sim$ 103.7 KHz, while the frequency of the slow clock was $\sim$ 1 KHz. The pedestal value is related to the frequency of the clock signal, thus the calibration constants for them are different.
 
-A complete calibration period is shown in Fig.   \ref{fig:BCM-Calibration}.
+A complete calibration period is shown in Fig.  \ref{fig:BCM-Calibration}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/bcm_calib}
@@ -192,7 +252,7 @@ A complete calibration period is shown in Fig.   \ref{fig:BCM-Calibration}.
 \begin{equation}
 Charge=K*Temperature,\label{eq:c=00003Dkt}
 \end{equation}
-where $K$ is the heat capacity of tungsten. It was measured by Ahamad Mahmoud before the experiment \cite{tungstenelog}. The result is shown in Fig.  \ref{fig:Tungsten-calorimeter-heat}
+where $K$ is the heat capacity of tungsten. It was measured by Ahamad Mahmoud before the experiment \cite{tungstenelog}. The result is shown in Fig. \ref{fig:Tungsten-calorimeter-heat}
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.7\linewidth]{pic/heatcap}
@@ -209,24 +269,24 @@ There are several devices needed to be calibrated, and each one has its own spec
 
 A reset signal was sent to the SIS3800 scaler at the beginning of the run to clear the counts. Since the scaler was found to cause high deadtime, only clock signals were sampled for each event, while other signals were sampled for each 1000 events. Also the DAQ read the scaler once at the end of the run. 
 
-The middle left picture in Fig.  \ref{fig:BCM-Calibration} is for the SIS3800 calibration. The rise in the graph is the period when the beam hits the tungsten, corresponding to the rise in the top left. The total charge has the following relation with the counts:
+The middle left picture in Fig. \ref{fig:BCM-Calibration} is for the SIS3800 calibration. The rise in the graph is the period when the beam hits the tungsten, corresponding to the rise in the top left. The total charge has the following relation with the counts:
 
 \begin{equation}
 Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3800charge}
 \end{equation}
-where $\Delta counts$ is the total BCM counts accumulated in the scaler, $\Delta clockcounts$ is the total clock counts accumulated in the scaler. The $ped$ is the pedestal value which is calculated from the first-order polynomial fits before and after the beam heats the tungsten. To get the $slope$ value, two time points are chosen before and after the beam. Using the $\Delta counts$ and the $\Delta clockcounts$ between these two time points and combining with the charge calculated from the temperature, the $slope$ value is then determined.
+where $\Delta counts$ is the total BCM counts accumulated in the scaler, $\Delta clockcounts$ is the total clock counts accumulated in the scaler. The $ped$ is the pedestal value, which is calculated from the first-order polynomial fits before and after the beam. To get the $slope$ value, two time points are chosen before and after the beam heats the tungsten. Using the $\Delta counts$ and the $\Delta clockcounts$ between these two time points and combining with the charge calculated from the temperature, the $slope$ value is then determined.
 
 The beam current is calculated from the calibration constants as: 
 
 \begin{equation}
 Current=slope*(rate-ped*clockrate),\label{eq:sis3800current}
 \end{equation}
-where $rate$ and $clockrate$ are defined as the bcm counts per second and clock counts per second.
+where $rate$ and $clockrate$ are defined as the BCM counts per second and clock counts per second.
 
 
 \subsection{Calibration for SIS3801 scaler}
 
-To calibrate the SIS3801 scaler it is necessary to accumulate all of the counts for each helicity window, without any loss of data. There are two methods to get the total counts. One is using the sum counts from two virtual scalers. The offline analyzer \cite{analyzer} automatically accumulates the total counts for positive helicity state and negative helicity state, which present two independent variables (positive and negative virtual scaler) in the raw data. Another is accumulating all of the counts from the ringbuffer. The helicity decoder was used to check if data were lost. The calculated calibration constants are the same from the two methods. Further procedures are same as the SIS3800. The total charge has the following relation with the counts:
+To calibrate the SIS3801 scaler it is necessary to accumulate all of the counts for each helicity window without any loss of data. There are two methods to get the total counts. One is using the sum counts from two virtual scalers. The offline analyzer \cite{analyzer} automatically accumulates the total counts for positive helicity states and negative helicity states, which present two independent variables (positive and negative virtual scaler) in the raw data. Another is accumulating all of the counts from the ringbuffer. The helicity decoder was used to check if data were lost. The calculated calibration constants are the same from the two methods. Further procedures are same as the SIS3800. The total charge has the following relation with the counts:
 
 \begin{equation}
 Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3801charge}
@@ -256,9 +316,9 @@ Current=slope*(rate-ped)*875\mbox{\ensuremath{\mu}s}/1041.65\mbox{\ensuremath{\m
 
 \subsection{Uncertainty}
 
-The uncertainty of the calculated charge from the tungsten calorimeter comes from the beam energy, RTD, measured tungsten heat capacity, and the heat loss. The accuracy of the beam energy calculated from the ARC measurement \cite{hallanim} is 0.2 MeV in the range of 0.5 to 6 GeV \cite{arcmeasurepage}, which contributes to the uncertainty of calculated charge of 0.34 nC per 1 K temperature rise (2.2 GeV beam energy). The uncertainties of the RTDs are 12.5 mK \cite{calorimeterrtd}, which contributes uncertainty of $0.046\,\mu C$ (2.2 GeV beam energy). The $50\,J/K$ uncertainty of heat capacity contributes $0.18\,\mu C$ per 1 K temperature rise (2.2GeV beam energy). The Hall A calorimeter thermal and mechanical design limits heat losses to the $\sim$ 0.2\% level if the measurement is within 20 minutes \cite{hacalorimeter}, which results in an uncertainty of the calculated charge of an additional 0.2 \%. The total uncertainty is $\sim$ 0.68 \% for the calculated charge from tungsten.
+The uncertainty of the calculated charge from the tungsten calorimeter comes from the beam energy, RTD, measured tungsten heat capacity, and the heat loss. The accuracy of the beam energy calculated from the ARC measurement \cite{hallanim} is 0.2 MeV in the range of 0.5 to 6 GeV \cite{arcmeasurepage}, which contributes to the uncertainty of calculated charge of 0.34 nC per 1 K temperature rise (2.2 GeV beam energy). The uncertainties of the RTDs are 12.5 mK \cite{calorimeterrtd}, which contributes uncertainty of $0.046\,\mu C$ (2.2 GeV beam energy). The $50\,J/K$ uncertainty of heat capacity contributes $0.18\,\mu C$ per 1 K temperature rise (2.2 GeV beam energy). The Hall A calorimeter thermal and mechanical design limits heat losses to the $\sim$ 0.2 \% level if the measurement within 20 min\cite{hacalorimeter}, which causes the uncertainty of calculated charge additional 0.2 \%. The total uncertainty is $\sim$ 0.68 \% for the calculated charge from tungsten.
 
-By comparing the difference between the upstream and downstream BCMs, the fluctuations between the two are below $0.19\:\mu C$ for 90\% of runs. The relative differences between them for 90\% runs are below 0.7\%, as shown in Fig. \ref{fig:Comparingud}
+By comparing the difference between the upstream and downstream BCMs, the fluctuations between the two are below $0.19\:\mu C$ for 90 \% runs. The relative differences between them for 90 \% of runs are below 0.7 \%, as shown in Fig. \ref{fig:Comparingud}
 \begin{figure}
 \begin{centering}
 \subfloat[Absolute difference between upstream and downstream charge]{\begin{centering}
@@ -274,7 +334,17 @@ By comparing the difference between the upstream and downstream BCMs, the fluctu
 
 \caption{\label{fig:Comparingud}Comparison of the charge calculated from the upstream and downstream BCMs. Each entry in the graph is the total charge calculated from each run from the experiment.}
 \end{figure}
-. The differences indicate the uncertainty of the BCMs are below 0.7\%. Combined with the uncertainty of the tungsten calorimeter, the final uncertainty of BCM is below 1\%.
+. The differences indicate the uncertainty of the BCM is below 0.7 \%. Combined with the uncertainty of the tungsten calorimeter, the final uncertainty of BCMs is below 1 \%.
+
+Fig.  \ref{fig:BCM-timestab} shows the stability of the calibration with time during 3/13/2012 - 5/18/2012. 
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.8\linewidth]{pic/timestab}
+\par\end{centering}
+
+\caption{\label{fig:BCM-timestab}BCM calibration constants change during 3/13/2012 - 5/18/2012. The blue dot is for upstream BCM, and the green dot is for downstream BCM (recorded in the SIS3800 scaler in right arm). The x axis is the calibration date, while the y axis is the slope recorded in the Appendix (SIS3800). The constants were changed in Apr.2 and Apr.19.}
+\end{figure}
+ The fluctuation of the calibration constants was below 1\% in one month. 
 
 
 \section{Calibration constants}
@@ -282,12 +352,12 @@ By comparing the difference between the upstream and downstream BCMs, the fluctu
 The calibration constants are shown in the Appendix Tables 1-9. Some specials are listed below:
 \begin{itemize}
 \item Begin - Mar.17 3rm downstream scaler abnormal
-\item Mar.18 - Apr.2 left arm upstream scaler noisy
-\item Apr.2 - Apr.9 right arm SIS3801 not working
-\item Apr.9 changed right arm scaler channel for bcm
-\item Apr.19 - calibration constant changed
-\item Near May.12 third arm SIS3801 not working
-\item May.13 - May.14 downstream bcm broken
+\item Mar.18 - Apr.2 Left arm upstream scaler noisy
+\item Apr.2 - Apr.9 Right arm SIS3801 not working
+\item Apr.9 Changed right arm scaler channel for bcm
+\item Apr.19 -  Calibration constant changed
+\item Near May.12 Third arm SIS3801 not working
+\item May.13 - May.14 Downstream bcm broken
 \end{itemize}
 The bcm receiver gain settings for each periods are list below, the values after the date are: 
 
@@ -299,16 +369,16 @@ IQ\_Filter\_K
 
 Mag\_Filter\_K
 \begin{itemize}
-\item Begin - Mar.2 18:39:42 gain changing
+\item Begin - Mar.2 18:39:42 Gain changing
 \item Mar.2 18:39:43 - Mar.5 10:00:12 10/10/1 9/9/1 3 4
-\item Mar.5 10:00:13 - Mar.5 10:27:40 gain changing 
+\item Mar.5 10:00:13 - Mar.5 10:27:40 Gain changing 
 \item Mar.5 10:27:41 - Mar.6 8:51:39 10/10/1 9/9/1 1 4
 \item Mar.6 8:51:40 - Mar.6 13:45:43 10/13/1 9/9/1 1 4
-\item Mar.6 13:45:44 - Mar.6 13:49:05 gain changing
+\item Mar.6 13:45:44 - Mar.6 13:49:05 Gain changing
 \item Mar.6 13:49:06 - Mar.7 17:20:10 29/30/4 27/27/4 1 4
-\item Mar.7 17:20:11 - Mar.7 17:23:25 gain changing
+\item Mar.7 17:20:11 - Mar.7 17:23:25 Gain changing
 \item Mar.7 17:23:25 - Mar.10 13:12:53 29/30/4 27/27/4 1 4
-\item Mar.10 13:12:54 - Mar.10 13:33:15 gain changing
+\item Mar.10 13:12:54 - Mar.10 13:33:15 Gain changing
 \item Mar.10 13:33:16 - end 40/41/4 40/43/4 1 4 
 \end{itemize}
 \bibliographystyle{elsarticle-num}
