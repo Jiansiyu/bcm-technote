@@ -210,7 +210,7 @@ reference "fig:BPM-receiver"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -234,7 +234,7 @@ name "fig:BPM-receiver"
 
 \end_inset
 
-BPM and BCM receiver used for the g2p/GEp experiments
+BCM receiver used for the g2p/GEp experiments
 \end_layout
 
 \end_inset
@@ -758,7 +758,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../thesis/pic/ringbuffer2.png
+	filename pic/ringbuffer2.png
 	lyxscale 20
 	width 80line%
 
@@ -844,7 +844,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../thesis/pic/happex.png
+	filename pic/happexdaq.png
 	lyxscale 30
 	width 100col%
 
@@ -909,7 +909,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../thesis/pic/timing_board.png
+	filename pic/timing_board.png
 	lyxscale 20
 	width 90line%
 
