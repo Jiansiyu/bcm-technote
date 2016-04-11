@@ -99,12 +99,15 @@ The g2p/GEp experiments used a solid
 
  polarized target, where the polarization of the target is sensitive to
  temperature and radiation.
- The beam current was limited to 5-100nA during the experiment to avoid
- too much depolarization of target.
+ The beam current was limited to 5-100 nA during the experiment to avoid
+ too much depolarization of target (The typical Hall A running condition
+ for beam current is a few mA to 100 A).
  The measured charge was further used to get the accurate physics asymmetries.
- This technical note summarizes the method to calibrate the beam charge
- monitors (BCM) for the g2p/GEp experiments, with the tungsten calorimeter,
- new BCM receiver, and DAQ system.
+ A new BCM receiver and DAQ system were used to measure the beam current
+ at such a low current range.
+ A tungsten calorimeter was used to calibrate the BCMs.
+ This technical note summarizes the calibration procedure and the performance
+ of the BCMs.
 \end_layout
 
 \begin_layout Section
@@ -190,7 +193,7 @@ key "Denard2001"
  did not work at low current, a new BCM receiver was designed by John Musson
  and his colleagues from the JLab instrumentation group for the purpose
  of achieving a reasonable signal/noise (S/N) ratio in the beam current
- environment a range of several nanoampere to several micro-ampere 
+ range of several nanoampere to several micro-ampere 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mussonece652paper"
@@ -210,7 +213,7 @@ reference "fig:BPM-receiver"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
