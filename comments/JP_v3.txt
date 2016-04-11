@@ -1,0 +1,37 @@
+1) The note should aim for a more general audience (such as new graduate students).
+Keeping this in mind, you should give clear explanations/reasons for
+the choices of instrumentation and methods. For example, in the abstract, you should
+mention the typical Hall A running condition for beam current (a few microA to 100 A)
+as a reference scale to be compared to what g2p try to deal with (50-100 nA). Also later
+when you talking about uncertainties, you keep mention each one contributed to certain
+micro C. But never give a reference value (page 11, 0.86 uC, how big is it, relative to what?)
+
+2) Last sentence in the abstract, tungsten calorimeter is used to calibrate BCM while
+receiver/DAQ are part of BCM readout system, they are not parallel. Maybe you can put
+new receiver/DAQ into preceding sentence:
+ "A new BCM receiver and DAQ system were used to measure beam current at such a low
+current range. A tungsten calorimeter was used to calibrate the BCMs. This technical note
+summarizes the calibration procedure and the performance of the BCMs."
+Modified
+
+3) Section 1, first paragraph and Fig. 1. The figure should put emphasize on BCMs and tungsten
+calorimeter. Should have BCM(u), BCM (d) and the Unser on the figure to make your text easier
+to understand.
+
+4)Section 1.1, 3rd line "current environment a range of"
+--> "current range of"
+Modified
+
+5) Section 2.1, 2.2 and 2.3,
+   a) not clear why the counts need to subtract ped
+   b) seems eq (5) and (6) are inconsistent, should eq (5) to have the closing perenthis be after 103700/s?
+   c) not clear why eq (5) (or (7)) needs to have 971.65 us/1041.65us (875us/1041.65us)?
+
+6) fig 11, why top right figure different from top left figure?
+Temerature at top left approachs close to 30 while top right approaches 26?
+
+7) Section 2.4 for uncertainty, it is important to have the number reference to something.
+Looking at Fig 11, top two left plot, the temerature variation is ~ 0.3
+while the total temperature rise is ~ 9. This seems give an uncretainty of more than 3%?
+Looking at fig. 14, looking at 7 points on top right, the fluctuation is +- 0.3 compared to
+3.6, shold be 10%, not 0.8 %?
