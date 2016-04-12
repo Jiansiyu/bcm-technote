@@ -17,6 +17,7 @@ Modified
 3) Section 1, first paragraph and Fig. 1. The figure should put emphasize on BCMs and tungsten
 calorimeter. Should have BCM(u), BCM (d) and the Unser on the figure to make your text easier
 to understand.
+Modified
 
 4)Section 1.1, 3rd line "current environment a range of"
 --> "current range of"
@@ -24,11 +25,13 @@ Modified
 
 5) Section 2.1, 2.2 and 2.3,
    a) not clear why the counts need to subtract ped
+   rewrite the sentence in section 2 for the the introduction of pedestal
    b) seems eq (5) and (6) are inconsistent, should eq (5) to have the closing perenthis be after 103700/s?
    c) not clear why eq (5) (or (7)) needs to have 971.65 us/1041.65us (875us/1041.65us)?
 
 6) fig 11, why top right figure different from top left figure?
 Temerature at top left approachs close to 30 while top right approaches 26?
+Sorry they are the different period figures. I modified the plot in top left.
 
 7) Section 2.4 for uncertainty, it is important to have the number reference to something.
 Looking at Fig 11, top two left plot, the temerature variation is ~ 0.3

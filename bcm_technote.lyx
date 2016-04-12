@@ -103,8 +103,8 @@ The g2p/GEp experiments used a solid
  too much depolarization of target (The typical Hall A running condition
  for beam current is a few mA to 100 A).
  The measured charge was further used to get the accurate physics asymmetries.
- A new BCM receiver and DAQ system were used to measure the beam current
- at such a low current range.
+ A new BCM (Beam Current Monitor) receiver and DAQ system were used to measure
+ the beam current at such a low current range.
  A tungsten calorimeter was used to calibrate the BCMs.
  This technical note summarizes the calibration procedure and the performance
  of the BCMs.
@@ -115,10 +115,26 @@ Hardware
 \end_layout
 
 \begin_layout Standard
-The BCM system used for the g2p/GEp experiments contains two RF cavities,
- a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
+The BCM system used for the g2p/GEp experiments contains two RF cavities
+ (1a and 1c in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beamline"
+
+\end_inset
+
+), a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
  calorimeter for calibration.
- The Unser monitor was not used because it has an accuracy of 0.5 
+ The Unser monitor (1b in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Beamline"
+
+\end_inset
+
+) was not used because it has an accuracy of 0.5 
 \begin_inset Formula $\mu A$
 \end_inset
 
@@ -137,7 +153,7 @@ reference "fig:Beamline"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1218,7 +1234,10 @@ Calibration data were taken several times during the experiment.
 \end_layout
 
 \begin_layout Standard
-There were two types of clocks: fast clock and slow clock.
+The pedestal is defined as the accumulated counts or ADC values per time
+ when there is no beam.
+ The value of it depends on the frequency of the clock source.
+ There are two types of clock: fast clock and slow clock.
  The frequency of the fast clock was 
 \begin_inset Formula $\sim$
 \end_inset
@@ -1228,8 +1247,8 @@ There were two types of clocks: fast clock and slow clock.
 \end_inset
 
  1 KHz.
- The pedestal value is related to the frequency of the clock signal, thus
- the calibration constants for them are different.
+ The calibration was taken for either of them.
+ 
 \end_layout
 
 \begin_layout Standard
