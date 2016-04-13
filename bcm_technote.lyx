@@ -1569,11 +1569,11 @@ where
 \end_inset
 
  is the frequency of the fast clock, 
-\begin_inset Formula $971.65\mbox{\mu s}$
+\begin_inset Formula $971.65\ \mbox{\mu s}$
 \end_inset
 
  is the duration of T-Stable, and 
-\begin_inset Formula $1041.65\mu s$
+\begin_inset Formula $1041.65\ \mu s$
 \end_inset
 
  is the duration of a helicity window.
@@ -1640,7 +1640,12 @@ key "arcmeasurepage"
 \end_inset
 
 , which contributes to the uncertainty of calculated charge of 0.34 nC per
- 1 K temperature rise (2.2 GeV beam energy).
+ 1 K temperature rise (2.2 GeV beam energy.
+ As the reference, the total charge received in tungsten is about 
+\begin_inset Formula $\mathrm{30\ \mu C}$
+\end_inset
+
+).
  The uncertainties of the RTDs are 12.5 mK 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1649,7 +1654,7 @@ key "calorimeterrtd"
 \end_inset
 
 , which contributes uncertainty of 
-\begin_inset Formula $0.046\,\mu C$
+\begin_inset Formula $\mathrm{0.046\ \mu C}$
 \end_inset
 
  (2.2 GeV beam energy).
@@ -1658,7 +1663,7 @@ key "calorimeterrtd"
 \end_inset
 
  uncertainty of heat capacity contributes 
-\begin_inset Formula $0.18\,\mu C$
+\begin_inset Formula $\mathrm{0.18\ \mu C}$
 \end_inset
 
  per 1 K temperature rise (2.2 GeV beam energy).
@@ -1667,7 +1672,7 @@ key "calorimeterrtd"
 \begin_inset Formula $\sim$
 \end_inset
 
- 0.2 % level if the measurement within 20 min
+ 0.2 % level if the measurement within 20 min 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hacalorimeter"
@@ -1685,7 +1690,7 @@ key "hacalorimeter"
 \begin_layout Standard
 By comparing the difference between the upstream and downstream BCMs, the
  fluctuations between the two are below 
-\begin_inset Formula $0.19\:\mu C$
+\begin_inset Formula $\mathrm{0.19\ \mu C}$
 \end_inset
 
  for 90 % runs.
@@ -1847,7 +1852,22 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
  (recorded in the SIS3800 scaler in right arm).
  The x axis is the calibration date, while the y axis is the slope recorded
  in the Appendix (SIS3800).
- The constants were changed in Apr.2 and Apr.19.
+ The constants were changed in Apr.2 and Apr.19 (splitted with red line).
+ The fluctuations are calculated using root mean square, with the date range
+ of Mar.3 
+\begin_inset Formula $\sim$
+\end_inset
+
+ Apr.2, Apr.2 
+\begin_inset Formula $\sim$
+\end_inset
+
+ Apr.19, and Apr.19 
+\begin_inset Formula $\sim$
+\end_inset
+
+ May.18.
+ 
 \end_layout
 
 \end_inset

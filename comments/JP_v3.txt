@@ -38,3 +38,7 @@ Looking at Fig 11, top two left plot, the temerature variation is ~ 0.3
 while the total temperature rise is ~ 9. This seems give an uncretainty of more than 3%?
 Looking at fig. 14, looking at 7 points on top right, the fluctuation is +- 0.3 compared to
 3.6, shold be 10%, not 0.8 %?
+Added value reference of 30uC charge received in tungsten. 
+Fig11. As mentioned in section 2, we only use the measured temperature value while the temperature became stable. When the beam just off, the temperature in the tungsten is not uniform, the value in RTD will continuing changing, that's why you saw the fluctuating  when the beam just stop. Also we only take care about the relative temperature rise for 6 RTDs.
+Fig14. The 0.8% fluctuating is only for the points right of the red line, the calibration constant changed in April. 19.  Also I use the RMS, not the maximum fluctuation. Should I need to use the maximum fluctuation instead? Added some descriptions in the title. 
+
