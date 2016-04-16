@@ -28,6 +28,7 @@ Modified
    rewrite the sentence in section 2 for the the introduction of pedestal
    b) seems eq (5) and (6) are inconsistent, should eq (5) to have the closing perenthis be after 103700/s?
    c) not clear why eq (5) (or (7)) needs to have 971.65 us/1041.65us (875us/1041.65us)?
+   As mentioned in section 2.2, 
 
 6) fig 11, why top right figure different from top left figure?
 Temerature at top left approachs close to 30 while top right approaches 26?
