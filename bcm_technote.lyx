@@ -126,7 +126,14 @@ reference "fig:Beamline"
 
 ), a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
  calorimeter for calibration.
- The Unser monitor (1b in Fig.
+ The Unser monitor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Unser"
+
+\end_inset
+
+ (1b in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -139,8 +146,15 @@ reference "fig:Beamline"
 \end_inset
 
  so it is not usable at low current.
- Farady cup has about same accuracy and loss in the machine needs to be
- taken into account.
+ Farady cup 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Faradaycup"
+
+\end_inset
+
+ has about same accuracy and loss in the machine needs to be taken into
+ account.
  The location of them is shown in Fig.
  
 \begin_inset CommandInset ref
@@ -153,7 +167,7 @@ reference "fig:Beamline"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1018,7 +1032,7 @@ reference "fig:Comparison-for-asym"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1053,8 +1067,7 @@ Charge asym comparison between HAPPEX and scaler
 \end_inset
 
 Comparison of charge asymmetry measurements from HAPPEX ADCs and scalers.
- The top three pictures use HAPPEX ADCs, while the bottom three pictures
- use scalers.
+ The top three plots use HAPPEX ADCs, while the bottom three plots use scalers.
  The beam currents from left to right are 125 nA, 75 nA, and 50 nA.
  The total number of events are same in each histogram.
 \end_layout
@@ -1237,6 +1250,8 @@ Calibration data were taken several times during the experiment.
 The pedestal is defined as the accumulated counts or ADC values per time
  when there is no beam.
  The value of it depends on the frequency of the clock source.
+ It needs to be removed for extracting the real accumulated counts caused
+ by beam.
  There are two types of clock: fast clock and slow clock.
  The frequency of the fast clock was 
 \begin_inset Formula $\sim$
@@ -1304,9 +1319,11 @@ BCM Calibration, the top left and right figures are the temperature rise
 
 \end_inset
 
- The total temperature rise was used to calculate the total charge.
- The zero-order polynomial fits were taken before the beam charging and
- after the temperature become stable when the tungsten is in the equilibrating
+ The total temperature rise is used to calculate the total charge.
+ When the beam just off, the temperature readouts keep fluctuating until
+ the heat is uniform in the tungsten.
+ The zero-order polynomial fits are taken before the beam charging and after
+ the temperature become stable when the tungsten is in the equilibrating
  position.
  The relationship between the total charge and the temperature rise is:
 \end_layout
@@ -1314,7 +1331,7 @@ BCM Calibration, the top left and right figures are the temperature rise
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=K*Temperature,\label{eq:c=kt}
+Charge=K\cdot Temperature,\label{eq:c=kt}
 \end{equation}
 
 \end_inset
@@ -1405,6 +1422,12 @@ There are several devices needed to be calibrated, and each one has its
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Calibration-for-SIS3800"
+
+\end_inset
+
 Calibration for SIS3800 scaler
 \end_layout
 
@@ -1430,13 +1453,13 @@ reference "fig:BCM-Calibration"
  is for the SIS3800 calibration.
  The rise in the graph is the period when the beam hits the tungsten, correspond
 ing to the rise in the top left.
- The total charge has the following relation with the counts:
+ The relation of the total charge and the counts is defined as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3800charge}
+Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3800charge}
 \end{equation}
 
 \end_inset
@@ -1484,7 +1507,7 @@ The beam current is calculated from the calibration constants as:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=slope*(rate-ped*clockrate),\label{eq:sis3800current}
+Current=slope\cdot(rate-ped\cdot clockrate),\label{eq:sis3800current}
 \end{equation}
 
 \end_inset
@@ -1523,13 +1546,13 @@ key "analyzer"
  The helicity decoder was used to check if data were lost.
  The calculated calibration constants are the same from the two methods.
  Further procedures are same as the SIS3800.
- The total charge has the following relation with the counts:
+ The relation of the total charge and the counts is defined as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3801charge}
+Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3801charge}
 \end{equation}
 
 \end_inset
@@ -1543,6 +1566,18 @@ where the
 \end_inset
 
  are counted from the SIS3801 scaler.
+ The value of 
+\begin_inset Formula $Charge$
+\end_inset
+
+ uses the same value from tungsten as in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Calibration-for-SIS3800"
+
+\end_inset
+
+, thus it is considered as the whole charge in the whole helicity window.
  Since the SIS3801 does not count for 70 
 \begin_inset Formula $\mu s$
 \end_inset
@@ -1553,30 +1588,58 @@ where the
 
 , the slopes calculated for the SIS3801 are larger than the slope for the
  SIS3800.
- The beam current is calculated as:
+ If we define 
+\begin_inset Formula $rate$
+\end_inset
+
+ as the counts for one helicity window (the readout from SIS3801 in each
+ helicity entry), the 
+\begin_inset Formula $\Delta clockcounts$
+\end_inset
+
+ recorded in the SIS3801 for one helicity window is equal to 
+\begin_inset Formula $103700s^{-1}*971.65\mbox{\mu s}$
+\end_inset
+
+, where 
+\begin_inset Formula $103700s^{-1}$
+\end_inset
+
+ is the frequency of the fast clock, and 
+\begin_inset Formula $971.65\ \mbox{\mu s}$
+\end_inset
+
+ is the duration of T-Stable.
+ The beam current is then calculated as the charge divide the duration of
+ the whole helicity window 
+\begin_inset Formula $1041.65\ \mu s$
+\end_inset
+
+ :
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=Slope*(rate-ped*103700/s*971.65\mbox{\mu s})/1041.65\mu s,\label{eq:sis3801current}
+Current=slope\cdot(rate-ped\cdot103700s^{-1}\cdot971.65\mbox{\mu s})/1041.65\mu s,\label{eq:sis3801current}
 \end{equation}
 
 \end_inset
 
-where 
-\begin_inset Formula $103700/s$
+Note the constants in equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sis3801charge"
+
 \end_inset
 
- is the frequency of the fast clock, 
-\begin_inset Formula $971.65\ \mbox{\mu s}$
+) are used to calculate the charge in the whole helicity window.
+ If one need to know the absolute charge in T-Stable, an additional factor
+ of 
+\begin_inset Formula $971.65\mu s/1041.65\mu s$
 \end_inset
 
- is the duration of T-Stable, and 
-\begin_inset Formula $1041.65\ \mu s$
-\end_inset
-
- is the duration of a helicity window.
+ is needed to be applied.
 \end_layout
 
 \begin_layout Subsection
@@ -1587,13 +1650,13 @@ Calibration for HAPPEX ADC
 To calibrate the HAPPEX ADC, the values are accumulated for all of the events
  between two time periods as the total counts.
  The entries in the HAPPEX DAQ are used as the time stamp.
- The total charge has the following relation with the counts:
+ The relation of the total charge and the counts is defined as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope*875\mbox{\mu s}*(\Delta counts-ped*\Delta entries),\label{eq:happexcharge}
+Charge=slope\cdot875\mbox{\mu s}\cdot(\Delta counts-ped\cdot\Delta entries),\label{eq:happexcharge}
 \end{equation}
 
 \end_inset
@@ -1603,18 +1666,32 @@ where
 \end_inset
 
  is the integration time of the ADC.
- The beam current is calculated as:
+ Similar as the SIS3801 scaler, the ADC only accumulate during the integration
+ time.
+ If we define 
+\begin_inset Formula $rate$
+\end_inset
+
+ as the accumulated counts in one helicity window (the readout ADC value),
+ the beam current is calculated as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=slope*(rate-ped)*875\mbox{\mu s}/1041.65\mbox{\mu s}.\label{eq:happexcurrent}
+Current=slope\cdot875\mu s\cdot(rate-ped)/1041.65\mbox{\mu s}.\label{eq:happexcurrent}
 \end{equation}
 
 \end_inset
 
+Note the charge calculated using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:happexcharge"
 
+\end_inset
+
+) is the charge in the whole helicity window.
 \end_layout
 
 \begin_layout Subsection

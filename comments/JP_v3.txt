@@ -5,6 +5,7 @@ mention the typical Hall A running condition for beam current (a few microA to 1
 as a reference scale to be compared to what g2p try to deal with (50-100 nA). Also later
 when you talking about uncertainties, you keep mention each one contributed to certain
 micro C. But never give a reference value (page 11, 0.86 uC, how big is it, relative to what?)
+Modified in abstract and added reference value in page 11.
 
 2) Last sentence in the abstract, tungsten calorimeter is used to calibrate BCM while
 receiver/DAQ are part of BCM readout system, they are not parallel. Maybe you can put
@@ -25,10 +26,11 @@ Modified
 
 5) Section 2.1, 2.2 and 2.3,
    a) not clear why the counts need to subtract ped
-   rewrite the sentence in section 2 for the the introduction of pedestal
+   Added more detail about the pedestal in section 2, line 115.  
    b) seems eq (5) and (6) are inconsistent, should eq (5) to have the closing perenthis be after 103700/s?
+   The eq(5) is correct. I used the eq (4) to calibrate slope for sis3801,  but used eq (6) to calibrate slope for Happex (have "*875us" in eq(6)). eq(5) and eq(7) is derived from eq(4) and eq(6). It is ok to define eq(6) not have "*875us", and take away "*875us" in eq(7), but the calculated slope will be different.
    c) not clear why eq (5) (or (7)) needs to have 971.65 us/1041.65us (875us/1041.65us)?
-   As mentioned in section 2.2, 
+   Added more detail to explain this in section 2.2, '/1041.65us' is used to get current from charge.Moved '875us' in eq(7) to the same position in eq(6).
 
 6) fig 11, why top right figure different from top left figure?
 Temerature at top left approachs close to 30 while top right approaches 26?
@@ -40,6 +42,6 @@ while the total temperature rise is ~ 9. This seems give an uncretainty of more 
 Looking at fig. 14, looking at 7 points on top right, the fluctuation is +- 0.3 compared to
 3.6, shold be 10%, not 0.8 %?
 Added value reference of 30uC charge received in tungsten. 
-Fig11. As mentioned in section 2, we only use the measured temperature value while the temperature became stable. When the beam just off, the temperature in the tungsten is not uniform, the value in RTD will continuing changing, that's why you saw the fluctuating  when the beam just stop. Also we only take care about the relative temperature rise for 6 RTDs.
+Fig11. we only use the measured temperature value while the temperature became stable. When the beam just off, the temperature in the tungsten is not uniform, the value in RTD will continuing changing, that's why you saw the fluctuating  when the beam just stop. Also we only take care about the relative temperature rise for 6 RTDs. Added additional explanation in section 2 line 120.
 Fig14. The 0.8% fluctuating is only for the points right of the red line, the calibration constant changed in April. 19.  Also I use the RMS, not the maximum fluctuation. Should I need to use the maximum fluctuation instead? Added some descriptions in the title. 
 
