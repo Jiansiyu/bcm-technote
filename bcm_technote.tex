@@ -47,7 +47,7 @@ The g2p/GEp experiments used a solid $\mathrm{NH_{3}}$ polarized target, where t
 
 \section{Hardware}
 
-The BCM system used for the g2p/GEp experiments contains two RF cavities (1a and 1c in Fig. \ref{fig:Beamline}), a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. The Unser monitor (1b in Fig. \ref{fig:Beamline}) was not used because it has an accuracy of 0.5 $\mu A$ so it is not usable at low current. Farady cup has about same accuracy and loss in the machine needs to be taken into account. The location of them is shown in Fig. \ref{fig:Beamline}.
+The BCM system used for the g2p/GEp experiments contains two RF cavities (1a and 1c in Fig. \ref{fig:Beamline}), a BCM receiver with related data-acquisition (DAQ) system, and a tungsten calorimeter for calibration. The Unser monitor \cite{Unser} (1b in Fig. \ref{fig:Beamline}) was not used because it has an accuracy of 0.5 $\mu A$ so it is not usable at low current. Farady cup \cite{Faradaycup} has about same accuracy and loss in the machine needs to be taken into account. The location of them is shown in Fig. \ref{fig:Beamline}.
 \begin{figure}
 \begin{centering}
 \includegraphics[width=1\linewidth]{pic/beamline_lite}
@@ -195,7 +195,7 @@ The HAPPEX ADC is designed for high bit resolution (18-bit) and a small non-line
 \includegraphics[width=0.95\linewidth]{pic/asym_diff}
 \par\end{centering}
 
-\caption[Charge asym comparison between HAPPEX and scaler]{\label{fig:Comparison-for-asym}Comparison of charge asymmetry measurements from HAPPEX ADCs and scalers. The top three pictures use HAPPEX ADCs, while the bottom three pictures use scalers. The beam currents from left to right are 125 nA, 75 nA, and 50 nA. The total number of events are same in each histogram.}
+\caption[Charge asym comparison between HAPPEX and scaler]{\label{fig:Comparison-for-asym}Comparison of charge asymmetry measurements from HAPPEX ADCs and scalers. The top three plots use HAPPEX ADCs, while the bottom three plots use scalers. The beam currents from left to right are 125 nA, 75 nA, and 50 nA. The total number of events are same in each histogram.}
 \end{figure}
  
 
@@ -235,7 +235,7 @@ For the temperature measurement, six resistance temperature detectors (RTDs) are
 
 Calibration data were taken several times during the experiment. In order to achieve the uniform heat load from the beam over the tungsten surface, the rasters were turned on during the BCM calibration. The limited size of the ringbuffer caused potential loss of data when the read-out speed was lower than the read-in speed. For the deadtime consideration, the DAQ system only read out no more than 50 sets data from the ringbuffer. An additional clock trigger with a frequency larger than 20 Hz ($\geqq$ 960 (helicity frequency) / 50) was added to avoid data loss in the ringbuffer recorded in the data-stream. The clock signal was needed for calculating the pedestal of the scaler and the ADC. For the HAPPEX ADC, the helicity entries was used as the clock. 
 
-The pedestal is defined as the accumulated counts or ADC values per time when there is no beam. The value of it depends on the frequency of the clock source. There are two types of clock: fast clock and slow clock. The frequency of the fast clock was $\sim$ 103.7 KHz, while the frequency of the slow clock was $\sim$ 1 KHz. The calibration was taken for either of them. 
+The pedestal is defined as the accumulated counts or ADC values per time when there is no beam. The value of it depends on the frequency of the clock source. It needs to be removed for extracting the real accumulated counts caused by beam. There are two types of clock: fast clock and slow clock. The frequency of the fast clock was $\sim$ 103.7 KHz, while the frequency of the slow clock was $\sim$ 1 KHz. The calibration was taken for either of them. 
 
 A complete calibration period is shown in Fig.  \ref{fig:BCM-Calibration}.
 \begin{figure}
@@ -247,10 +247,10 @@ A complete calibration period is shown in Fig.  \ref{fig:BCM-Calibration}.
 
 
 \end{figure}
- The total temperature rise was used to calculate the total charge. The zero-order polynomial fits were taken before the beam charging and after the temperature become stable when the tungsten is in the equilibrating position. The relationship between the total charge and the temperature rise is:
+ The total temperature rise is used to calculate the total charge. When the beam just off, the temperature readouts keep fluctuating until the heat is uniform in the tungsten. The zero-order polynomial fits are taken before the beam charging and after the temperature become stable when the tungsten is in the equilibrating position. The relationship between the total charge and the temperature rise is:
 
 \begin{equation}
-Charge=K*Temperature,\label{eq:c=00003Dkt}
+Charge=K\cdot Temperature,\label{eq:c=00003Dkt}
 \end{equation}
 where $K$ is the heat capacity of tungsten. It was measured by Ahamad Mahmoud before the experiment \cite{tungstenelog}. The result is shown in Fig. \ref{fig:Tungsten-calorimeter-heat}
 \begin{figure}
@@ -265,60 +265,60 @@ where $K$ is the heat capacity of tungsten. It was measured by Ahamad Mahmoud be
 There are several devices needed to be calibrated, and each one has its own special condition. The detail calibration procedures for each device are as follows.
 
 
-\subsection{Calibration for SIS3800 scaler}
+\subsection{\label{sub:Calibration-for-SIS3800}Calibration for SIS3800 scaler}
 
 A reset signal was sent to the SIS3800 scaler at the beginning of the run to clear the counts. Since the scaler was found to cause high deadtime, only clock signals were sampled for each event, while other signals were sampled for each 1000 events. Also the DAQ read the scaler once at the end of the run. 
 
-The middle left picture in Fig. \ref{fig:BCM-Calibration} is for the SIS3800 calibration. The rise in the graph is the period when the beam hits the tungsten, corresponding to the rise in the top left. The total charge has the following relation with the counts:
+The middle left picture in Fig. \ref{fig:BCM-Calibration} is for the SIS3800 calibration. The rise in the graph is the period when the beam hits the tungsten, corresponding to the rise in the top left. The relation of the total charge and the counts is defined as:
 
 \begin{equation}
-Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3800charge}
+Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3800charge}
 \end{equation}
 where $\Delta counts$ is the total BCM counts accumulated in the scaler, $\Delta clockcounts$ is the total clock counts accumulated in the scaler. The $ped$ is the pedestal value, which is calculated from the first-order polynomial fits before and after the beam. To get the $slope$ value, two time points are chosen before and after the beam heats the tungsten. Using the $\Delta counts$ and the $\Delta clockcounts$ between these two time points and combining with the charge calculated from the temperature, the $slope$ value is then determined.
 
 The beam current is calculated from the calibration constants as: 
 
 \begin{equation}
-Current=slope*(rate-ped*clockrate),\label{eq:sis3800current}
+Current=slope\cdot(rate-ped\cdot clockrate),\label{eq:sis3800current}
 \end{equation}
 where $rate$ and $clockrate$ are defined as the BCM counts per second and clock counts per second.
 
 
 \subsection{Calibration for SIS3801 scaler}
 
-To calibrate the SIS3801 scaler it is necessary to accumulate all of the counts for each helicity window without any loss of data. There are two methods to get the total counts. One is using the sum counts from two virtual scalers. The offline analyzer \cite{analyzer} automatically accumulates the total counts for positive helicity states and negative helicity states, which present two independent variables (positive and negative virtual scaler) in the raw data. Another is accumulating all of the counts from the ringbuffer. The helicity decoder was used to check if data were lost. The calculated calibration constants are the same from the two methods. Further procedures are same as the SIS3800. The total charge has the following relation with the counts:
+To calibrate the SIS3801 scaler it is necessary to accumulate all of the counts for each helicity window without any loss of data. There are two methods to get the total counts. One is using the sum counts from two virtual scalers. The offline analyzer \cite{analyzer} automatically accumulates the total counts for positive helicity states and negative helicity states, which present two independent variables (positive and negative virtual scaler) in the raw data. Another is accumulating all of the counts from the ringbuffer. The helicity decoder was used to check if data were lost. The calculated calibration constants are the same from the two methods. Further procedures are same as the SIS3800. The relation of the total charge and the counts is defined as:
 
 \begin{equation}
-Charge=slope*(\Delta counts-ped*\Delta clockcounts),\label{eq:sis3801charge}
+Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3801charge}
 \end{equation}
-where the $\Delta counts$ and $\Delta clockcounts$ are counted from the SIS3801 scaler. Since the SIS3801 does not count for 70 $\mu s$ for each 1041.65 $\mu s$, the slopes calculated for the SIS3801 are larger than the slope for the SIS3800. The beam current is calculated as:
+where the $\Delta counts$ and $\Delta clockcounts$ are counted from the SIS3801 scaler. The value of $Charge$ uses the same value from tungsten as in section \ref{sub:Calibration-for-SIS3800}, thus it is considered as the whole charge in the whole helicity window. Since the SIS3801 does not count for 70 $\mu s$ for each 1041.65 $\mu s$, the slopes calculated for the SIS3801 are larger than the slope for the SIS3800. If we define $rate$ as the counts for one helicity window (the readout from SIS3801 in each helicity entry), the $\Delta clockcounts$ recorded in the SIS3801 for one helicity window is equal to $103700s^{-1}*971.65\mbox{\ensuremath{\mu}s}$, where $103700s^{-1}$ is the frequency of the fast clock, and $971.65\ \mbox{\ensuremath{\mu}s}$ is the duration of T-Stable. The beam current is then calculated as the charge divide the duration of the whole helicity window $1041.65\ \mu s$ :
 
 \begin{equation}
-Current=Slope*(rate-ped*103700/s*971.65\mbox{\ensuremath{\mu}s})/1041.65\mu s,\label{eq:sis3801current}
+Current=slope\cdot(rate-ped\cdot103700s^{-1}\cdot971.65\mbox{\ensuremath{\mu}s})/1041.65\mu s,\label{eq:sis3801current}
 \end{equation}
-where $103700/s$ is the frequency of the fast clock, $971.65\mbox{\ensuremath{\mu}s}$ is the duration of T-Stable, and $1041.65\mu s$ is the duration of a helicity window.
+Note the constants in equation (\ref{eq:sis3801charge}) are used to calculate the charge in the whole helicity window. If one need to know the absolute charge in T-Stable, an additional factor of $971.65\mu s/1041.65\mu s$ is needed to be applied.
 
 
 \subsection{Calibration for HAPPEX ADC}
 
-To calibrate the HAPPEX ADC, the values are accumulated for all of the events between two time periods as the total counts. The entries in the HAPPEX DAQ are used as the time stamp. The total charge has the following relation with the counts:
+To calibrate the HAPPEX ADC, the values are accumulated for all of the events between two time periods as the total counts. The entries in the HAPPEX DAQ are used as the time stamp. The relation of the total charge and the counts is defined as:
 
 \begin{equation}
-Charge=slope*875\mbox{\ensuremath{\mu}s}*(\Delta counts-ped*\Delta entries),\label{eq:happexcharge}
+Charge=slope\cdot875\mbox{\ensuremath{\mu}s}\cdot(\Delta counts-ped\cdot\Delta entries),\label{eq:happexcharge}
 \end{equation}
-where $875\mu s$ is the integration time of the ADC. The beam current is calculated as:
+where $875\mu s$ is the integration time of the ADC. Similar as the SIS3801 scaler, the ADC only accumulate during the integration time. If we define $rate$ as the accumulated counts in one helicity window (the readout ADC value), the beam current is calculated as:
 
 \begin{equation}
-Current=slope*(rate-ped)*875\mbox{\ensuremath{\mu}s}/1041.65\mbox{\ensuremath{\mu}s}.\label{eq:happexcurrent}
+Current=slope\cdot875\mu s\cdot(rate-ped)/1041.65\mbox{\ensuremath{\mu}s}.\label{eq:happexcurrent}
 \end{equation}
-
+Note the charge calculated using equation (\ref{eq:happexcharge}) is the charge in the whole helicity window.
 
 
 \subsection{Uncertainty}
 
-The uncertainty of the calculated charge from the tungsten calorimeter comes from the beam energy, RTD, measured tungsten heat capacity, and the heat loss. The accuracy of the beam energy calculated from the ARC measurement \cite{hallanim} is 0.2 MeV in the range of 0.5 to 6 GeV \cite{arcmeasurepage}, which contributes to the uncertainty of calculated charge of 0.34 nC per 1 K temperature rise (2.2 GeV beam energy). The uncertainties of the RTDs are 12.5 mK \cite{calorimeterrtd}, which contributes uncertainty of $0.046\,\mu C$ (2.2 GeV beam energy). The $50\,J/K$ uncertainty of heat capacity contributes $0.18\,\mu C$ per 1 K temperature rise (2.2 GeV beam energy). The Hall A calorimeter thermal and mechanical design limits heat losses to the $\sim$ 0.2 \% level if the measurement within 20 min\cite{hacalorimeter}, which causes the uncertainty of calculated charge additional 0.2 \%. The total uncertainty is $\sim$ 0.68 \% for the calculated charge from tungsten.
+The uncertainty of the calculated charge from the tungsten calorimeter comes from the beam energy, RTD, measured tungsten heat capacity, and the heat loss. The accuracy of the beam energy calculated from the ARC measurement \cite{hallanim} is 0.2 MeV in the range of 0.5 to 6 GeV \cite{arcmeasurepage}, which contributes to the uncertainty of calculated charge of 0.34 nC per 1 K temperature rise (2.2 GeV beam energy. As the reference, the total charge received in tungsten is about $\mathrm{30\ \mu C}$). The uncertainties of the RTDs are 12.5 mK \cite{calorimeterrtd}, which contributes uncertainty of $\mathrm{0.046\ \mu C}$ (2.2 GeV beam energy). The $50\,J/K$ uncertainty of heat capacity contributes $\mathrm{0.18\ \mu C}$ per 1 K temperature rise (2.2 GeV beam energy). The Hall A calorimeter thermal and mechanical design limits heat losses to the $\sim$ 0.2 \% level if the measurement within 20 min \cite{hacalorimeter}, which causes the uncertainty of calculated charge additional 0.2 \%. The total uncertainty is $\sim$ 0.68 \% for the calculated charge from tungsten.
 
-By comparing the difference between the upstream and downstream BCMs, the fluctuations between the two are below $0.19\:\mu C$ for 90 \% runs. The relative differences between them for 90 \% of runs are below 0.7 \%, as shown in Fig. \ref{fig:Comparingud}
+By comparing the difference between the upstream and downstream BCMs, the fluctuations between the two are below $\mathrm{0.19\ \mu C}$ for 90 \% runs. The relative differences between them for 90 \% of runs are below 0.7 \%, as shown in Fig. \ref{fig:Comparingud}
 \begin{figure}
 \begin{centering}
 \subfloat[Absolute difference between upstream and downstream charge]{\begin{centering}
@@ -342,7 +342,7 @@ Fig.  \ref{fig:BCM-timestab} shows the stability of the calibration with time du
 \includegraphics[width=0.8\linewidth]{pic/timestab}
 \par\end{centering}
 
-\caption{\label{fig:BCM-timestab}BCM calibration constants change during 3/13/2012 - 5/18/2012. The blue dot is for upstream BCM, and the green dot is for downstream BCM (recorded in the SIS3800 scaler in right arm). The x axis is the calibration date, while the y axis is the slope recorded in the Appendix (SIS3800). The constants were changed in Apr.2 and Apr.19.}
+\caption{\label{fig:BCM-timestab}BCM calibration constants change during 3/13/2012 - 5/18/2012. The blue dot is for upstream BCM, and the green dot is for downstream BCM (recorded in the SIS3800 scaler in right arm). The x axis is the calibration date, while the y axis is the slope recorded in the Appendix (SIS3800). The constants were changed in Apr.2 and Apr.19 (splitted with red line). The fluctuations are calculated using root mean square, with the date range of Mar.3 $\sim$ Apr.2, Apr.2 $\sim$ Apr.19, and Apr.19 $\sim$ May.18. }
 \end{figure}
  The fluctuation of the calibration constants was below 1\% in one month. 
 
