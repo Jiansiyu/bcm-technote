@@ -1900,7 +1900,7 @@ reference "fig:BCM-timestab"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1930,8 +1930,12 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
  The x axis is the calibration date, while the y axis is the slope recorded
  in the Appendix (SIS3800).
  The constants were changed in Apr.2 and Apr.19 (splitted with red line).
- The fluctuations are calculated using root mean square, with the date range
- of Mar.3 
+ The fluctuations are calculated using root mean square (number on left)
+ and 
+\begin_inset Formula $2\cdot(max-min)/(max+min)$
+\end_inset
+
+ (number on right), with the date range of Mar.3 
 \begin_inset Formula $\sim$
 \end_inset
 
@@ -1954,7 +1958,14 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
 
 \end_inset
 
- The fluctuation of the calibration constants was below 1% in one month.
+ Except for the significantly calibration constant changed in Apr.2 and Apr.19
+ during the restricted access, and the downstream BCM was broken in May.13,
+ the calibration constant kept stable in several weeks at the level of 1
+ 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 2%.
  
 \end_layout
 
@@ -1980,7 +1991,7 @@ Apr.2 - Apr.9 Right arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
-Apr.9 Changed right arm scaler channel for bcm
+Apr.9 Changed right arm scaler channel for BCM
 \end_layout
 
 \begin_layout Itemize
@@ -1992,7 +2003,7 @@ Near May.12 Third arm SIS3801 not working
 \end_layout
 
 \begin_layout Itemize
-May.13 - May.14 Downstream bcm broken
+May.13 - May.14 Downstream BCM broken
 \end_layout
 
 \begin_layout Standard
