@@ -1958,10 +1958,29 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
 
 \end_inset
 
- Except for the significantly calibration constant changed in Apr.2 and Apr.19
- during the restricted access, and the downstream BCM was broken in May.13,
- the calibration constant kept stable in several weeks at the level of 1
- 
+ The calibration constants changed 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 9% for the upstream BCM and 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 4% for the downstream in Apr.19 during the restricted access, changed 3
+\begin_inset Formula $\sim$
+\end_inset
+
+4% for both BCMs in Apr.2, and the downstream BCM was broken in May.13.
+ Also sometimes the scaler became noisy (see details in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Calibration-constants"
+
+\end_inset
+
+).
+ In the other time, the calibration constants kept stable in several weeks
+ at the level of 1 
 \begin_inset Formula $\sim$
 \end_inset
 
@@ -1970,6 +1989,12 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Calibration-constants"
+
+\end_inset
+
 Calibration constants
 \end_layout
 
