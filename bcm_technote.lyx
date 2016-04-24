@@ -101,22 +101,43 @@ The g2p/GEp experiments used a solid
  temperature and radiation.
  The beam current was limited to 5-100 nA during the experiment to avoid
  too much depolarization of target (The typical Hall A running condition
- for beam current is a few mA to 100 A).
+ for beam current is 1 
+\begin_inset Formula $\mu A$
+\end_inset
+
+ to 100 
+\begin_inset Formula $\mu A$
+\end_inset
+
+).
  The measured charge was further used to get the accurate physics asymmetries.
- A new BCM (Beam Current Monitor) receiver and DAQ system were used to measure
- the beam current at such a low current range.
+ New BCM (Beam Current Monitor) receivers and a DAQ system were used to
+ measure the beam current at such a low current range.
  A tungsten calorimeter was used to calibrate the BCMs.
  This technical note summarizes the calibration procedure and the performance
  of the BCMs.
 \end_layout
 
 \begin_layout Section
-Hardware
+Setup
 \end_layout
 
 \begin_layout Standard
-The BCM system used for the g2p/GEp experiments contains two RF cavities
- (1a and 1c in Fig.
+The BCM system used for the g2p 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "g2pproposal"
+
+\end_inset
+
+ and GEp 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gepproposal"
+
+\end_inset
+
+ experiments contains two RF cavities (1a and 1c in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -124,7 +145,7 @@ reference "fig:Beamline"
 
 \end_inset
 
-), a BCM receiver with related data-acquisition (DAQ) system, and a tungsten
+), BCM receivers with associated data-acquisition (DAQ) system, and a tungsten
  calorimeter for calibration.
  The Unser monitor 
 \begin_inset CommandInset citation
@@ -141,21 +162,21 @@ reference "fig:Beamline"
 
 \end_inset
 
-) was not used because it has an accuracy of 0.5 
+) was not used because it has an accuracy of 0.3 
 \begin_inset Formula $\mu A$
 \end_inset
 
  so it is not usable at low current.
- Farady cup 
+ A Farady cup 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Faradaycup"
 
 \end_inset
 
- has about same accuracy and loss in the machine needs to be taken into
- account.
- The location of them is shown in Fig.
+ at the injector has about the same accuracy due to the beam loss in the
+ machine.
+ The setup is shown in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -220,7 +241,7 @@ key "Denard2001"
 
 \end_inset
 
- did not work at low current, a new BCM receiver was designed by John Musson
+ did not work at low current, new BCM receivers were designed by John Musson
  and his colleagues from the JLab instrumentation group for the purpose
  of achieving a reasonable signal/noise (S/N) ratio in the beam current
  range of several nanoampere to several micro-ampere 
@@ -315,8 +336,8 @@ Data acquisition system
 \end_layout
 
 \begin_layout Standard
-The BCM data from the receiver was connected to the DAQ system as shown
- in Fig.
+The BCM data from the receivers were passed on the DAQ system as shown in
+ Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -390,9 +411,9 @@ key "helicityboard"
  It controls the high voltage supply to change the orientation of the polarizati
 on of laser, which is used to generate the polarized electron beam with
  GaAs photogun by using the method of optical pumping.
- Meanwhile the helicity control board sends waves to the DAQ system in the
- Hall in order to get the helicity based information.
- During the experiment the helicity setting was the same as QWEAK experiment
+ Meanwhile the helicity control board sends signals to the DAQ system in
+ the hall in order to get the helicity based information.
+ During the experiment the helicity setting was the same as the QWEAK experiment
  in Hall C, as shown in table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -579,9 +600,9 @@ Helicity configuration
 \end_layout
 
 \begin_layout Standard
-Four waves were sent to Hall during the experiment by fiber, which named
- T-Settle (or MPS), pattern_sync (or QRT), pair_sync, and delayed helicity
- (Fig.
+Four helicity signals were sent to hall during the experiment via optical
+ fibers, which named T-Settle (or MPS), pattern_sync (or QRT), pair_sync,
+ and delayed helicity (Fig.
   
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -617,7 +638,7 @@ reference "fig:helicity"
 
 , one pattern is composed with four helicity windows.
  The pattern_sync indicates the first window of one pattern.
- The T-Settle signal is used for judging if helicity is reliable.
+ The T-Settle signal is used to indicate if the helicity is valid.
  The high-level T-Settle (70 
 \begin_inset Formula $\mu s$
 \end_inset
@@ -630,8 +651,9 @@ reference "fig:helicity"
 ) indicates the reliable helicity states.
  The pair sync signal flips in each helicity window, which is used as the
  redundancy information.
- The helicity flip signal sent to Hall is 8 windows delayed with the real
- helicity flip signal, and need to be further dealt for use.
+ The helicity flip signals sent to the halls are 8 windows delayed with
+ respect to the actual helicity flip signals, and need to be taken care
+ of in decoding.
  More details about the helicity decoder can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -686,8 +708,8 @@ Scaler
 \end_layout
 
 \begin_layout Standard
-The V2F converts the DC voltage from the BCM receiver to the frequency signal
- in order to readout the scalers for counting.
+The V2F converts the DC voltage signal from the BCM receiver to a frequency
+ signal in order to readout the scalers for counting.
  The SIS380x scaler has two modes selected by a jumper on the board: SIS3800
  and SIS3801.
  
@@ -1032,7 +1054,7 @@ reference "fig:Comparison-for-asym"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1240,15 +1262,15 @@ Calibration data were taken several times during the experiment.
 
  960 (helicity frequency) / 50) was added to avoid data loss in the ringbuffer
  recorded in the data-stream.
- The clock signal was needed for calculating the pedestal of the scaler
+ The clock signal was needed for calculating the pedestal slope of the scaler
  and the ADC.
- For the HAPPEX ADC, the helicity entries was used as the clock.
+ For the HAPPEX ADC, the helicity entries were used as the clock.
  
 \end_layout
 
 \begin_layout Standard
-The pedestal is defined as the accumulated counts or ADC values per time
- when there is no beam.
+The pedestal slope is defined as the accumulated counts or ADC values per
+ unit time when there is no beam.
  The value of it depends on the frequency of the clock source.
  It needs to be removed for extracting the real accumulated counts caused
  by beam.
@@ -1262,7 +1284,7 @@ The pedestal is defined as the accumulated counts or ADC values per time
 \end_inset
 
  1 KHz.
- The calibration was taken for either of them.
+ The calibration was taken for each of them.
  
 \end_layout
 
@@ -1408,7 +1430,7 @@ key "tungstenelog"
 
 .
  
-\begin_inset Formula $T$
+\begin_inset Formula $Temperature$
 \end_inset
 
  is the average temperature from the 6 RTDs.
@@ -1459,7 +1481,7 @@ ing to the rise in the top left.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3800charge}
+Charge=slope\cdot(\Delta counts-pedslope\cdot\Delta clockcounts),\label{eq:sis3800charge}
 \end{equation}
 
 \end_inset
@@ -1474,11 +1496,11 @@ where
 
  is the total clock counts accumulated in the scaler.
  The 
-\begin_inset Formula $ped$
+\begin_inset Formula $pedslope$
 \end_inset
 
- is the pedestal value, which is calculated from the first-order polynomial
- fits before and after the beam.
+ is the value of the pedestal slope, which is calculated from the first-order
+ polynomial fits before and after the beam.
  To get the 
 \begin_inset Formula $slope$
 \end_inset
@@ -1507,7 +1529,7 @@ The beam current is calculated from the calibration constants as:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=slope\cdot(rate-ped\cdot clockrate),\label{eq:sis3800current}
+Current=slope\cdot(rate-pedslope\cdot clockrate),\label{eq:sis3800current}
 \end{equation}
 
 \end_inset
@@ -1545,14 +1567,14 @@ key "analyzer"
  Another is accumulating all of the counts from the ringbuffer.
  The helicity decoder was used to check if data were lost.
  The calculated calibration constants are the same from the two methods.
- Further procedures are same as the SIS3800.
+ The procedures are similar to the SIS3800.
  The relation of the total charge and the counts is defined as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope\cdot(\Delta counts-ped\cdot\Delta clockcounts),\label{eq:sis3801charge}
+Charge=slope\cdot(\Delta counts-pedslope\cdot\Delta clockcounts),\label{eq:sis3801charge}
 \end{equation}
 
 \end_inset
@@ -1588,17 +1610,16 @@ reference "sub:Calibration-for-SIS3800"
 
 , the slopes calculated for the SIS3801 are larger than the slope for the
  SIS3800.
- If we define 
-\begin_inset Formula $rate$
+ If we denote 
+\begin_inset Formula $readout$
 \end_inset
 
- as the counts for one helicity window (the readout from SIS3801 in each
- helicity entry), the 
+ as the readout from SIS3801 in each helicity entry, the 
 \begin_inset Formula $\Delta clockcounts$
 \end_inset
 
  recorded in the SIS3801 for one helicity window is equal to 
-\begin_inset Formula $103700s^{-1}*971.65\mbox{\mu s}$
+\begin_inset Formula $103700s^{-1}\cdot971.65\mbox{\mu s}$
 \end_inset
 
 , where 
@@ -1606,13 +1627,13 @@ reference "sub:Calibration-for-SIS3800"
 \end_inset
 
  is the frequency of the fast clock, and 
-\begin_inset Formula $971.65\ \mbox{\mu s}$
+\begin_inset Formula $971.65\mu s$
 \end_inset
 
  is the duration of T-Stable.
  The beam current is then calculated as the charge divide the duration of
  the whole helicity window 
-\begin_inset Formula $1041.65\ \mu s$
+\begin_inset Formula $1041.65\mu s$
 \end_inset
 
  :
@@ -1621,7 +1642,7 @@ reference "sub:Calibration-for-SIS3800"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=slope\cdot(rate-ped\cdot103700s^{-1}\cdot971.65\mbox{\mu s})/1041.65\mu s,\label{eq:sis3801current}
+Current=slope\cdot(readout-pedslope\cdot103700s^{-1}\cdot971.65\mbox{\mu s})/1041.65\mu s,\label{eq:sis3801current}
 \end{equation}
 
 \end_inset
@@ -1647,8 +1668,12 @@ Calibration for HAPPEX ADC
 \end_layout
 
 \begin_layout Standard
-To calibrate the HAPPEX ADC, the values are accumulated for all of the events
- between two time periods as the total counts.
+To calibrate the HAPPEX ADC, the 
+\begin_inset Formula $\Delta counts$
+\end_inset
+
+ are accumulated for all of the events between two time periods as the total
+ counts.
  The entries in the HAPPEX DAQ are used as the time stamp.
  The relation of the total charge and the counts is defined as:
 \end_layout
@@ -1656,35 +1681,30 @@ To calibrate the HAPPEX ADC, the values are accumulated for all of the events
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Charge=slope\cdot875\mbox{\mu s}\cdot(\Delta counts-ped\cdot\Delta entries),\label{eq:happexcharge}
+Charge=slope\cdot(\Delta counts-pedslope\cdot\Delta entries),\label{eq:happexcharge}
 \end{equation}
 
 \end_inset
 
-where 
-\begin_inset Formula $875\mu s$
-\end_inset
-
- is the integration time of the ADC.
- Similar as the SIS3801 scaler, the ADC only accumulate during the integration
+Similar as the SIS3801 scaler, the ADC only accumulate during the integration
  time.
- If we define 
-\begin_inset Formula $rate$
-\end_inset
-
- as the accumulated counts in one helicity window (the readout ADC value),
- the beam current is calculated as:
+ The beam current is calculated as:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Current=slope\cdot875\mu s\cdot(rate-ped)/1041.65\mbox{\mu s}.\label{eq:happexcurrent}
+Current=slope\cdot(readout-pedslope)/1041.65\mbox{\mu s}.\label{eq:happexcurrent}
 \end{equation}
 
 \end_inset
 
-Note the charge calculated using equation (
+Where 
+\begin_inset Formula $readout$
+\end_inset
+
+ is the readout ADC value.
+ Note the charge calculated using equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:happexcharge"
@@ -1702,27 +1722,31 @@ Uncertainty
 The uncertainty of the calculated charge from the tungsten calorimeter comes
  from the beam energy, RTD, measured tungsten heat capacity, and the heat
  loss.
- The accuracy of the beam energy calculated from the ARC measurement 
+ The ARC measurement has a relative uncertainty of 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 
+\begin_inset Formula $5\times10^{-4}$
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hallanim"
 
 \end_inset
 
- is 0.2 MeV in the range of 0.5 to 6 GeV 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "arcmeasurepage"
-
+, which contributes to the uncertainty of calculated charge of 2 
+\begin_inset Formula $nC$
 \end_inset
 
-, which contributes to the uncertainty of calculated charge of 0.34 nC per
- 1 K temperature rise (2.2 GeV beam energy.
- As the reference, the total charge received in tungsten is about 
-\begin_inset Formula $\mathrm{30\ \mu C}$
+ per 1 K temperature rise (for 2.2 GeV beam energy), which is negligible
+ compared to the total charge received in tungsten calorimeter of 30 
+\begin_inset Formula $\mu C$
 \end_inset
 
-).
+ during the calibration.
  The uncertainties of the RTDs are 12.5 mK 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1730,11 +1754,11 @@ key "calorimeterrtd"
 
 \end_inset
 
-, which contributes uncertainty of 
+, which contributes an uncertainty of 
 \begin_inset Formula $\mathrm{0.046\ \mu C}$
 \end_inset
 
- (2.2 GeV beam energy).
+.
  The 
 \begin_inset Formula $50\,J/K$
 \end_inset
@@ -1743,13 +1767,13 @@ key "calorimeterrtd"
 \begin_inset Formula $\mathrm{0.18\ \mu C}$
 \end_inset
 
- per 1 K temperature rise (2.2 GeV beam energy).
+ per 1 K temperature rise.
  The Hall A calorimeter thermal and mechanical design limits heat losses
- to the 
+ to 
 \begin_inset Formula $\sim$
 \end_inset
 
- 0.2 % level if the measurement within 20 min 
+ 0.2 % level if the measurement is within 20 min 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hacalorimeter"
@@ -1761,7 +1785,7 @@ key "hacalorimeter"
 \begin_inset Formula $\sim$
 \end_inset
 
- 0.68 % for the calculated charge from tungsten.
+ 0.68 % for the calculated charge from the tungsten calorimeter.
 \end_layout
 
 \begin_layout Standard
@@ -1770,9 +1794,9 @@ By comparing the difference between the upstream and downstream BCMs, the
 \begin_inset Formula $\mathrm{0.19\ \mu C}$
 \end_inset
 
- for 90 % runs.
- The relative differences between them for 90 % of runs are below 0.7 %,
- as shown in Fig.
+ for 90 % of the runs.
+ The relative differences between them for 90 % of the runs are below 0.7
+ %, as shown in Fig.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1881,9 +1905,18 @@ Comparison of the charge calculated from the upstream and downstream BCMs.
 \end_inset
 
 .
- The differences indicate the uncertainty of the BCM is below 0.7 %.
- Combined with the uncertainty of the tungsten calorimeter, the final uncertaint
-y of BCMs is below 1 %.
+ The differences indicate the uncertainty due to the stability of the BCMs
+ is 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 0.7 %.
+ Combined with the calibration uncertainty of the tungsten calorimeter,
+ the total uncertainty of BCMs is 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 1 %.
 \end_layout
 
 \begin_layout Standard
@@ -1900,7 +1933,7 @@ reference "fig:BCM-timestab"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1958,7 +1991,42 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
 
 \end_inset
 
- The calibration constants changed 
+ The calibration constants were stable at the level of 
+\begin_inset Formula $\sim$
+\end_inset
+
+ 1 % for most of the time with following exceptions when there were condition
+ changes:
+\end_layout
+
+\begin_layout Itemize
+Begin - Mar.17, third arm downstream scaler abnormal
+\end_layout
+
+\begin_layout Itemize
+Mar.18 - Apr.2, left arm upstream scaler noisy
+\end_layout
+
+\begin_layout Itemize
+Apr.
+ 2, calibration constants changed 3
+\begin_inset Formula $\sim$
+\end_inset
+
+4% for both BCMs
+\end_layout
+
+\begin_layout Itemize
+Apr.2 - Apr.9, right arm SIS3801 not working
+\end_layout
+
+\begin_layout Itemize
+Apr.9, changed right arm scaler channel for BCM
+\end_layout
+
+\begin_layout Itemize
+Apr.
+ 19, calibration constants changed 
 \begin_inset Formula $\sim$
 \end_inset
 
@@ -1966,26 +2034,15 @@ BCM calibration constants change during 3/13/2012 - 5/18/2012.
 \begin_inset Formula $\sim$
 \end_inset
 
- 4% for the downstream in Apr.19 during the restricted access, changed 3
-\begin_inset Formula $\sim$
-\end_inset
+ 4% for the downstream
+\end_layout
 
-4% for both BCMs in Apr.2, and the downstream BCM was broken in May.13.
- Also sometimes the scaler became noisy (see details in section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Calibration-constants"
+\begin_layout Itemize
+Near May.12, third arm SIS3801 not working
+\end_layout
 
-\end_inset
-
-).
- In the other time, the calibration constants kept stable in several weeks
- at the level of 1 
-\begin_inset Formula $\sim$
-\end_inset
-
- 2%.
- 
+\begin_layout Itemize
+May.13 - May.14, downstream BCM broken
 \end_layout
 
 \begin_layout Section
@@ -2000,40 +2057,8 @@ Calibration constants
 
 \begin_layout Standard
 The calibration constants are shown in the Appendix Tables 1-9.
- Some specials are listed below:
-\end_layout
-
-\begin_layout Itemize
-Begin - Mar.17 3rm downstream scaler abnormal
-\end_layout
-
-\begin_layout Itemize
-Mar.18 - Apr.2 Left arm upstream scaler noisy
-\end_layout
-
-\begin_layout Itemize
-Apr.2 - Apr.9 Right arm SIS3801 not working
-\end_layout
-
-\begin_layout Itemize
-Apr.9 Changed right arm scaler channel for BCM
-\end_layout
-
-\begin_layout Itemize
-Apr.19 -  Calibration constant changed
-\end_layout
-
-\begin_layout Itemize
-Near May.12 Third arm SIS3801 not working
-\end_layout
-
-\begin_layout Itemize
-May.13 - May.14 Downstream BCM broken
-\end_layout
-
-\begin_layout Standard
-The bcm receiver gain settings for each periods are list below, the values
- after the date are: 
+ The gain settings of the bcm receivers for each periods are list below,
+ the values after the date are: 
 \end_layout
 
 \begin_layout Standard
@@ -2180,8 +2205,8 @@ hline SIS3800 upslope(slowclk)  & 1.37309e-06 & 3.32775e-07 & 3.34603E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 5.24344E+00 & 2.04717E+00 & 2.01363E+00 & 2.40785E+00
- & 2.01757E+00
+hline SIS3800 uppedslope(slowclk) & 5.24344E+00 & 2.04717E+00 & 2.01363E+00
+ & 2.40785E+00 & 2.01757E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2190,8 +2215,8 @@ hline SIS3800 downslope(slowclk)  & 1.30711e-06 & 2.58036e-07 & 2.57738E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 6.91734E+00 & 2.76818E+00 & 2.73600E+00 &
- 2.58978E+00 & 2.73382E+00
+hline SIS3800 downpedslope(slowclk) & 6.91734E+00 & 2.76818E+00 & 2.73600E+00
+ & 2.58978E+00 & 2.73382E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2200,8 +2225,8 @@ hline SIS3800 upslope(fstclk)  & 1.37346e-06 & 3.32774e-07 & 3.34604E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 5.17426E-02 & 2.01725E-02 & 1.98515E-02 & 2.37558E-02
- & 1.98845E-02
+hline SIS3800 uppedslope(fstclk) & 5.17426E-02 & 2.01725E-02 & 1.98515E-02
+ & 2.37558E-02 & 1.98845E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2210,8 +2235,8 @@ hline SIS3800 downslope(fstclk)  & 1.30736e-06 & 2.58035e-07 & 2.57739E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 6.82245E-02 & 2.72772E-02 & 2.69731E-02 & 2.55486E-0
-2 & 2.69437E-02
+hline SIS3800 downpedslope(fstclk) & 6.82245E-02 & 2.72772E-02 & 2.69731E-02
+ & 2.55486E-02 & 2.69437E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2220,8 +2245,8 @@ hline SIS3801 upslope(fstclk)  & 1.47161e-06 & 3.65962e-07 & 3.58951e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 5.15461E-02 & 3.09438E-02 & 1.98588E-02 & 2.37232E-02
- & 1.98880E-02
+hline SIS3801 uppedslope(fstclk) & 5.15461E-02 & 3.09438E-02 & 1.98588E-02
+ & 2.37232E-02 & 1.98880E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2230,24 +2255,24 @@ hline SIS3801 downslope(fstclk)  & 1.40127e-06 & 2.83756e-07 & 2.76493e-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 6.81238E-02 & 4.11454E-02 & 2.69735E-02 & 2.55914E-0
-2 & 2.69484E-02
+hline SIS3801 downpedslope(fstclk) & 6.81238E-02 & 4.11454E-02 & 2.69735E-02
+ & 2.55914E-02 & 2.69484E-02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope & not avail &  &  & 9.76018e-07 & 9.44277E-07
+hline HAPPEX upslope/875e-6 & not avail &  &  & 9.76018e-07 & 9.44277E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped & not avail &  &  & 7.47561E+02 & 7.64707E+02
+hline HAPPEX uppedslope & not avail &  &  & 7.47561E+02 & 7.64707E+02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope & not avail &  &  & 7.81678e-07 & 7.59977E-07
+hline HAPPEX downslope/875e-6 & not avail &  &  & 7.81678e-07 & 7.59977E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped & not avail &  &  & 7.06877E+02 & 7.27266E+02
+hline HAPPEX downpedslope & not avail &  &  & 7.06877E+02 & 7.27266E+02
 \backslash
 tabularnewline 
 \backslash
@@ -2320,8 +2345,8 @@ hline SIS3800 upslope(slowclk)  & 3.19668E-07 & 3.23814E-07 & 3.55483E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 2.02148E+00 & 2.02217E+00 & 1.99755E+00 & 2.03317E+00
- & 2.00619E+00
+hline SIS3800 uppedslope(slowclk) & 2.02148E+00 & 2.02217E+00 & 1.99755E+00
+ & 2.03317E+00 & 2.00619E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2330,8 +2355,8 @@ hline SIS3800 downslope(slowclk)  & 2.47684E-07 & 2.48227E-07 & 2.58163E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 2.73704E+00 & 2.74181E+00 & 2.71992E+00 &
- 2.75600E+00 & 2.74454E+00
+hline SIS3800 downpedslope(slowclk) & 2.73704E+00 & 2.74181E+00 & 2.71992E+00
+ & 2.75600E+00 & 2.74454E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2340,8 +2365,8 @@ hline SIS3800 upslope(fstclk)  & 3.19669E-07 & 3.23815E-07 & 3.55483E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.99247E-02 & 1.99301E-02 & 1.96837E-02 & 2.00331E-02
- & 1.97694E-02
+hline SIS3800 uppedslope(fstclk) & 1.99247E-02 & 1.99301E-02 & 1.96837E-02
+ & 2.00331E-02 & 1.97694E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2350,8 +2375,8 @@ hline SIS3800 downslope(fstclk)  & 2.47685E-07 & 2.48228E-07 & 2.58163E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.69776E-02 & 2.70227E-02 & 2.68033E-02 & 2.71552E-0
-2 & 2.70453E-02
+hline SIS3800 downpedslope(fstclk) & 2.69776E-02 & 2.70227E-02 & 2.68033E-02
+ & 2.71552E-02 & 2.70453E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2360,8 +2385,8 @@ hline SIS3801 upslope(fstclk)  & 3.42781e-07 & 3.4717e-07 & 3.81166e-07 & 3.7880
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.99254E-02 & 1.99350E-02 & 1.97021E-02 & 2.00361E-02
- & 1.97749E-02
+hline SIS3801 uppedslope(fstclk) & 1.99254E-02 & 1.99350E-02 & 1.97021E-02
+ & 2.00361E-02 & 1.97749E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2370,24 +2395,24 @@ hline SIS3801 downslope(fstclk)  & 2.65591e-07 & 2.6613e-07 & 2.76814e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.69789E-02 & 2.70306E-02 & 2.68191E-02 & 2.71594E-0
-2 & 2.70443E-02
+hline SIS3801 downpedslope(fstclk) & 2.69789E-02 & 2.70306E-02 & 2.68191E-02
+ & 2.71594E-02 & 2.70443E-02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope &  &  & 1.04042E-06 & 1.03394E-06 & 1.02106E-06
+hline HAPPEX upslope/875e-6 &  &  & 1.04042E-06 & 1.03394E-06 & 1.02106E-06
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped &  &  & 7.58219E+02 & 7.74628E+02 & 7.63704E+02
+hline HAPPEX uppedslope &  &  & 7.58219E+02 & 7.74628E+02 & 7.63704E+02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope &  &  & 7.86150E-07 & 7.84135E-07 & 7.76177E-07
+hline HAPPEX downslope/875e-6 &  &  & 7.86150E-07 & 7.84135E-07 & 7.76177E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped &  &  & 7.25062E+02 & 7.39477E+02 & 7.35583E+02
+hline HAPPEX downpedslope &  &  & 7.25062E+02 & 7.39477E+02 & 7.35583E+02
 \backslash
 tabularnewline 
 \backslash
@@ -2459,7 +2484,8 @@ hline SIS3800 upslope(slowclk)  & 3.49032E-07 & 3.47590E-07 & 3.50492E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 2.01442E+00 & 2.01317E+00 & 2.01224E+00 & 2.00844E+00
+hline SIS3800 uppedslope(slowclk) & 2.01442E+00 & 2.01317E+00 & 2.01224E+00
+ & 2.00844E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2468,8 +2494,8 @@ hline SIS3800 downslope(slowclk)  & 2.54925E-07 & 2.53945E-07 & 1.96575E-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 2.72054E+00 & 2.71869E+00 & 2.71795E+00 &
- 2.73275E+00
+hline SIS3800 downpedslope(slowclk) & 2.72054E+00 & 2.71869E+00 & 2.71795E+00
+ & 2.73275E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2478,7 +2504,8 @@ hline SIS3800 upslope(fstclk)  & 3.49036E-07 & 3.47589E-07 & 3.50490E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.98566E-02 & 1.98398E-02 & 1.98255E-02 & 1.97970E-02
+hline SIS3800 uppedslope(fstclk) & 1.98566E-02 & 1.98398E-02 & 1.98255E-02
+ & 1.97970E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2487,8 +2514,8 @@ hline SIS3800 downslope(fstclk)  & 2.54928E-07 & 2.53944E-07 & 1.96567E-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.68156E-02 & 2.67923E-02 & 2.67783E-02 & 2.69365E-0
-2
+hline SIS3800 downpedslope(fstclk) & 2.68156E-02 & 2.67923E-02 & 2.67783E-02
+ & 2.69365E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2497,7 +2524,8 @@ hline SIS3801 upslope(fstclk)  & 3.74239e-07 & 3.72691e-07 & 3.75909e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.98584E-02 & 1.98459E-02 & 1.98381E-02 & 1.97998E-02
+hline SIS3801 uppedslope(fstclk) & 1.98584E-02 & 1.98459E-02 & 1.98381E-02
+ & 1.97998E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2506,24 +2534,25 @@ hline SIS3801 downslope(fstclk)  & 2.73332e-07 & 2.72283e-07 & 2.10829e-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.68168E-02 & 2.67972E-02 & 2.68024E-02 & 2.69430E-0
-2
+hline SIS3801 downpedslope(fstclk) & 2.68168E-02 & 2.67972E-02 & 2.68024E-02
+ & 2.69430E-02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope & 1.02102E-06 & 1.01675E-06 & 1.02575E-06 & 1.03841e-06
+hline HAPPEX upslope/875e-6 & 1.02102E-06 & 1.01675E-06 & 1.02575E-06 & 1.03841e-06
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped & 7.66377E+02 & 7.66642E+02 & 7.65561E+02 & 7.60940E+02
+hline HAPPEX uppedslope & 7.66377E+02 & 7.66642E+02 & 7.65561E+02 & 7.60940E+02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope & 7.76257E-07 & 7.73150E-07 & 5.97952E-06 & 7.84284e-07
+hline HAPPEX downslope/875e-6 & 7.76257E-07 & 7.73150E-07 & 5.97952E-06 & 7.84284e-0
+7
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped & 7.26879E+02 & 7.26759E+02 & 7.23959E+02 & 7.29082E+02
+hline HAPPEX downpedslope & 7.26879E+02 & 7.26759E+02 & 7.23959E+02 & 7.29082E+02
 \backslash
 tabularnewline 
 \backslash
@@ -2597,8 +2626,8 @@ hline SIS3800 upslope(slowclk)  & 1.37212e-06 & 3.33141E-07 & 3.35299E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 5.23480E+00 & 2.04715E+00 & 2.01363E+00 & 1.88817E+00
- & 2.01757E+00
+hline SIS3800 uppedslope(slowclk) & 5.23480E+00 & 2.04715E+00 & 2.01363E+00
+ & 1.88817E+00 & 2.01757E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2607,8 +2636,8 @@ hline SIS3800 downslope(slowclk)  & 1.30632e-06 & 2.58320E-07 & 2.58274E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 6.91143E+00 & 2.76815E+00 & 2.73599E+00 &
- 2.58975E+00 & 2.73382E+00
+hline SIS3800 downpedslope(slowclk) & 6.91143E+00 & 2.76815E+00 & 2.73599E+00
+ & 2.58975E+00 & 2.73382E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2617,8 +2646,8 @@ hline SIS3800 upslope(fstclk)  & 1.37253e-06 & 3.33139E-07 & 3.35301E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 5.16652E-02 & 2.01720E-02 & 1.98516E-02 & 1.86263E-02
- & 1.98844E-02
+hline SIS3800 uppedslope(fstclk) & 5.16652E-02 & 2.01720E-02 & 1.98516E-02
+ & 1.86263E-02 & 1.98844E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2627,8 +2656,8 @@ hline SIS3800 downslope(fstclk)  & 1.30656e-06 & 2.58318E-07 & 2.58276E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 6.81632E-02 & 2.72768E-02 & 2.69733E-02 & 2.55485E-0
-2 & 2.69437E-02
+hline SIS3800 downpedslope(fstclk) & 6.81632E-02 & 2.72768E-02 & 2.69733E-02
+ & 2.55485E-02 & 2.69437E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2637,8 +2666,8 @@ hline SIS3801 upslope(fstclk)  & 1.46934e-06 & 3.65342e-07 & 3.59699e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 5.16033E-02 & 2.97348E-02 & 1.98585E-02 & 1.86580E-02
- & broken
+hline SIS3801 uppedslope(fstclk) & 5.16033E-02 & 2.97348E-02 & 1.98585E-02
+ & 1.86580E-02 & broken
 \backslash
 tabularnewline 
 \backslash
@@ -2647,24 +2676,24 @@ hline SIS3801 downslope(fstclk)  & 1.39902e-06 & 2.83277e-07 & 2.77067e-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 6.81575E-02 & 3.95893E-02 & 2.69721E-02 & 2.55542E-0
-2 & broken
+hline SIS3801 downpedslope(fstclk) & 6.81575E-02 & 3.95893E-02 & 2.69721E-02
+ & 2.55542E-02 & broken
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope & not avail &  &  & 9.55044e-07 & 9.23204E-07
+hline HAPPEX upslope/875e-6 & not avail &  &  & 9.55044e-07 & 9.23204E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped & not avail &  &  & 1.75740E+03 & 1.75756E+03
+hline HAPPEX uppedslope & not avail &  &  & 1.75740E+03 & 1.75756E+03
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope & not avail &  &  & 7.81495e-07 & 7.59968E-07
+hline HAPPEX downslope/875e-6 & not avail &  &  & 7.81495e-07 & 7.59968E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped & not avail &  &  & 1.07545E+03 & 1.07213E+03
+hline HAPPEX downpedslope & not avail &  &  & 1.07545E+03 & 1.07213E+03
 \backslash
 tabularnewline 
 \backslash
@@ -2738,8 +2767,8 @@ hline SIS3800 upslope(slowclk)  & 3.19449E-07 & 3.23652E-07 & 3.55750E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 2.02144E+00 & 2.02219E+00 & 1.99750E+00 & 2.03317E+00
- & 2.00620E+00
+hline SIS3800 uppedslope(slowclk) & 2.02144E+00 & 2.02219E+00 & 1.99750E+00
+ & 2.03317E+00 & 2.00620E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2748,8 +2777,8 @@ hline SIS3800 downslope(slowclk)  & 2.47514E-07 & 2.48103E-07 & 2.58357E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 2.73699E+00 & 2.74179E+00 & 2.71988E+00 &
- 2.75600E+00 & 2.74454E+00
+hline SIS3800 downpedslope(slowclk) & 2.73699E+00 & 2.74179E+00 & 2.71988E+00
+ & 2.75600E+00 & 2.74454E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2758,8 +2787,8 @@ hline SIS3800 upslope(fstclk)  & 3.19451E-07 & 3.23653E-07 & 3.55750E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.99248E-02 & 1.99306E-02 & 1.96839E-02 & 2.00331E-02
- & 1.97694E-02
+hline SIS3800 uppedslope(fstclk) & 1.99248E-02 & 1.99306E-02 & 1.96839E-02
+ & 2.00331E-02 & 1.97694E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2768,8 +2797,8 @@ hline SIS3800 downslope(fstclk)  & 2.47516E-07 & 2.48103E-07 & 2.58357E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.69778E-02 & 2.70229E-02 & 2.68034E-02 & 2.71552E-0
-2 & 2.70453E-02
+hline SIS3800 downpedslope(fstclk) & 2.69778E-02 & 2.70229E-02 & 2.68034E-02
+ & 2.71552E-02 & 2.70453E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2778,8 +2807,8 @@ hline SIS3801 upslope(fstclk)  & 3.42548e-07 & 3.46997e-07 & 3.81454e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.99254E-02 & 1.99350E-02 & 1.97020E-02 & 2.00361E-02
- & 1.97749E-02
+hline SIS3801 uppedslope(fstclk) & 1.99254E-02 & 1.99350E-02 & 1.97020E-02
+ & 2.00361E-02 & 1.97749E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2788,24 +2817,24 @@ hline SIS3801 downslope(fstclk)  & 2.6541e-07 & 2.65997e-07 & 2.77022e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.69789E-02 & 2.70307E-02 & 2.68188E-02 & 2.71595E-0
-2 & 2.70442E-02
+hline SIS3801 downpedslope(fstclk) & 2.69789E-02 & 2.70307E-02 & 2.68188E-02
+ & 2.71595E-02 & 2.70442E-02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope &  &  & 1.01836E-06 & 1.01194E-06 & 9.98575E-07
+hline HAPPEX upslope/875e-6 &  &  & 1.01836E-06 & 1.01194E-06 & 9.98575E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped &  &  & 1.76323E+03 & 1.77658E+03 & 1.76456E+03
+hline HAPPEX uppedslope &  &  & 1.76323E+03 & 1.77658E+03 & 1.76456E+03
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope &  &  & 7.86595E-07 & 7.84236E-07 & 7.75621E-07
+hline HAPPEX downslope/875e-6 &  &  & 7.86595E-07 & 7.84236E-07 & 7.75621E-07
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped &  &  & 1.09454E+03 & 1.10431E+03 & 1.10078E+03
+hline HAPPEX downpedslope &  &  & 1.09454E+03 & 1.10431E+03 & 1.10078E+03
 \backslash
 tabularnewline 
 \backslash
@@ -2880,7 +2909,8 @@ hline SIS3800 upslope(slowclk)  & 3.49296E-07 & 3.47708E-07 & 3.50342E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(slowclk) & 2.01441E+00 & 2.01317E+00 & 2.01224E+00 & 2.00686E+00
+hline SIS3800 uppedslope(slowclk) & 2.01441E+00 & 2.01317E+00 & 2.01224E+00
+ & 2.00686E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2889,8 +2919,8 @@ hline SIS3800 downslope(slowclk)  & 2.55118E-07 & 2.54031E-07 & 1.96491E-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(slowclk) & 2.72053E+00 & 2.71870E+00 & 2.71795E+00 &
- 2.73056E+00
+hline SIS3800 downpedslope(slowclk) & 2.72053E+00 & 2.71870E+00 & 2.71795E+00
+ & 2.73056E+00
 \backslash
 tabularnewline 
 \backslash
@@ -2899,7 +2929,8 @@ hline SIS3800 upslope(fstclk)  & 3.49301E-07 & 3.47708E-07 & 3.50340E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.98572E-02 & 1.98398E-02 & 1.98256E-02 & 1.97767E-02
+hline SIS3800 uppedslope(fstclk) & 1.98572E-02 & 1.98398E-02 & 1.98256E-02
+ & 1.97767E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2908,8 +2939,8 @@ hline SIS3800 downslope(fstclk)  & 2.55121E-07 & 2.54031E-07 & 1.96483E-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.68159E-02 & 2.67923E-02 & 2.67784E-02 & 2.69082E-0
-2
+hline SIS3800 downpedslope(fstclk) & 2.68159E-02 & 2.67923E-02 & 2.67784E-02
+ & 2.69082E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2918,7 +2949,8 @@ hline SIS3801 upslope(fstclk)  & 3.74523e-07 & 3.72818e-07 & 3.75748e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.98591E-02 & 1.98461E-02 & 1.98382E-02 & 1.97795E-02
+hline SIS3801 uppedslope(fstclk) & 1.98591E-02 & 1.98461E-02 & 1.98382E-02
+ & 1.97795E-02
 \backslash
 tabularnewline 
 \backslash
@@ -2927,24 +2959,25 @@ hline SIS3801 downslope(fstclk)  & 2.7354e-07 & 2.72376e-07 & 2.10737e-06 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.68172E-02 & 2.67970E-02 & 2.68023E-02 & 2.69125E-0
-2
+hline SIS3801 downpedslope(fstclk) & 2.68172E-02 & 2.67970E-02 & 2.68023E-02
+ & 2.69125E-02
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upslope & 9.99842E-07 & 9.95083E-07 & 1.00323E-06 & 1.01328E-06
+hline HAPPEX upslope/875e-6 & 9.99842E-07 & 9.95083E-07 & 1.00323E-06 & 1.01328E-06
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX upped & 1.77152E+03 & 1.77303E+03 & 1.77264E+03 & 1.76628E+03
+hline HAPPEX uppedslope & 1.77152E+03 & 1.77303E+03 & 1.77264E+03 & 1.76628E+03
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downslope & 7.76667E-07 & 7.73271E-07 & 5.97638E-06 & 7.82040E-07
+hline HAPPEX downslope/875e-6 & 7.76667E-07 & 7.73271E-07 & 5.97638E-06 & 7.82040E-0
+7
 \backslash
 tabularnewline 
 \backslash
-hline HAPPEX downped & 1.08914E+03 & 1.08845E+03 & 1.08867E+03 & 1.09584E+03
+hline HAPPEX downpedslope & 1.08914E+03 & 1.08845E+03 & 1.08867E+03 & 1.09584E+03
 \backslash
 tabularnewline 
 \backslash
@@ -3009,8 +3042,8 @@ hline SIS3800 upslope(fstclk)  & not avail & 3.32885e-07 & 3.34957E-07 & 3.36286
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & not avail & 2.01732E-02 & 1.98517E-02 & 1.98266E-02
- & 1.98850E-02
+hline SIS3800 uppedslope(fstclk) & not avail & 2.01732E-02 & 1.98517E-02 &
+ 1.98266E-02 & 1.98850E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3019,8 +3052,8 @@ hline SIS3800 downslope(fstclk)  & not avail & 1.2906e-07 & 1.29005E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & not avail & 5.45561E-02 & 5.39468E-02 & 2.68700E-02
- & 2.69434E-02
+hline SIS3800 downpedslope(fstclk) & not avail & 5.45561E-02 & 5.39468E-02
+ & 2.68700E-02 & 2.69434E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3029,8 +3062,8 @@ hline SIS3801 upslope(fstclk)  & not avail & 3.57236e-07 & 3.59326e-07 & 3.60744
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & not avail & 2.02169E-02 & 1.98582E-02 & 1.98876E-02
- & 1.98876E-02
+hline SIS3801 uppedslope(fstclk) & not avail & 2.02169E-02 & 1.98582E-02 &
+ 1.98876E-02 & 1.98876E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3039,8 +3072,8 @@ hline SIS3801 downslope(fstclk)  & not avail & 1.38495e-07 & 1.38383e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & not avail & 5.46740E-02 & 5.39542E-02 & 2.69487E-02
- & 2.69487E-02
+hline SIS3801 downpedslope(fstclk) & not avail & 5.46740E-02 & 5.39542E-02
+ & 2.69487E-02 & 2.69487E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3105,8 +3138,8 @@ hline SIS3800 upslope(fstclk)  & 3.19302E-07 & 3.23944E-07 & 3.56080E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.99247E-02 & 1.99308E-02 & 1.96874E-02 & 2.00331E-02
- & 1.97662E-02
+hline SIS3800 uppedslope(fstclk) & 1.99247E-02 & 1.99308E-02 & 1.96874E-02
+ & 2.00331E-02 & 1.97662E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3115,8 +3148,8 @@ hline SIS3800 downslope(fstclk)  & 2.47400E-07 & 2.48326E-07 & 2.58596E-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.69776E-02 & 2.70230E-02 & 2.68065E-02 & 2.71551E-0
-2 & 2.70411E-02
+hline SIS3800 downpedslope(fstclk) & 2.69776E-02 & 2.70230E-02 & 2.68065E-02
+ & 2.71551E-02 & 2.70411E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3125,8 +3158,8 @@ hline SIS3801 upslope(fstclk)  & 3.46631e-07 & 3.47304e-07 & 3.81801e-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.98876E-02 & 1.99356E-02 & 1.97044E-02 & 2.00362E-02
- & 1.97719E-02
+hline SIS3801 uppedslope(fstclk) & 1.98876E-02 & 1.99356E-02 & 1.97044E-02
+ & 2.00362E-02 & 1.97719E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3135,8 +3168,8 @@ hline SIS3801 downslope(fstclk)  & 2.67924e-07 & 2.66232e-07 & 2.77274e-07
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.69487E-02 & 2.70302E-02 & 2.68213E-02 & 2.71590E-0
-2 & 2.70400E-02
+hline SIS3801 downpedslope(fstclk) & 2.69487E-02 & 2.70302E-02 & 2.68213E-02
+ & 2.71590E-02 & 2.70400E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3201,7 +3234,8 @@ hline SIS3800 upslope(fstclk)  & 3.49381E-07 & 3.47768E-07 & 3.50458E-07 &
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 upped(fstclk) & 1.98550E-02 & 1.98381E-02 & 1.98268E-02 & 1.97758E-02
+hline SIS3800 uppedslope(fstclk) & 1.98550E-02 & 1.98381E-02 & 1.98268E-02
+ & 1.97758E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3210,8 +3244,8 @@ hline SIS3800 downslope(fstclk)  & 2.55180E-07 & 2.54075E-07 & 1.96554E-06
 \backslash
 tabularnewline 
 \backslash
-hline SIS3800 downped(fstclk) & 2.68130E-02 & 2.67914E-02 & 2.67804E-02 & 2.69069E-0
-2
+hline SIS3800 downpedslope(fstclk) & 2.68130E-02 & 2.67914E-02 & 2.67804E-02
+ & 2.69069E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3220,7 +3254,8 @@ hline SIS3801 upslope(fstclk)  & 3.74607e-07 & not avail & 3.75868e-07 & 3.80113
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 upped(fstclk) & 1.98589E-02 & not avail & 1.98389E-02 & 1.97786E-02
+hline SIS3801 uppedslope(fstclk) & 1.98589E-02 & not avail & 1.98389E-02 &
+ 1.97786E-02
 \backslash
 tabularnewline 
 \backslash
@@ -3229,7 +3264,8 @@ hline SIS3801 downslope(fstclk)  & 2.736e-07 & not avail & 2.10805e-06 & 2.75803
 \backslash
 tabularnewline 
 \backslash
-hline SIS3801 downped(fstclk) & 2.68173E-02 & not avail & 2.68024E-02 & 2.69116E-02
+hline SIS3801 downpedslope(fstclk) & 2.68173E-02 & not avail & 2.68024E-02
+ & 2.69116E-02
 \backslash
 tabularnewline 
 \backslash
