@@ -110,7 +110,8 @@ The g2p/GEp experiments used a solid
 \end_inset
 
 ).
- The measured charge was further used to get the accurate physics asymmetries.
+ The measured charge was further used to get the accurate physics cross
+ sections.
  New BCM (Beam Current Monitor) receivers and a DAQ system were used to
  measure the beam current at such a low current range.
  A tungsten calorimeter was used to calibrate the BCMs.
@@ -147,7 +148,7 @@ reference "fig:Beamline"
 
 ), BCM receivers with associated data-acquisition (DAQ) system, and a tungsten
  calorimeter for calibration.
- The Unser monitor 
+ The traditional calibration method using an Unser monitor 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Unser"
@@ -162,20 +163,21 @@ reference "fig:Beamline"
 
 \end_inset
 
-) was not used because it has an accuracy of 0.3 
+) would not work at low current because it has an accuracy of 0.3 
 \begin_inset Formula $\mu A$
 \end_inset
 
- so it is not usable at low current.
- A Farady cup 
+.
+ Using a Farady cup 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Faradaycup"
 
 \end_inset
 
- at the injector has about the same accuracy due to the beam loss in the
- machine.
+ in the injector region to calibrate BCMs there and then using the calibrated
+ BCMs in the injector region to cross-calibrate the BCMs in Hall A has about
+ the same accuracy due to the beam loss in the machine.
  The setup is shown in Fig.
  
 \begin_inset CommandInset ref
