@@ -400,7 +400,7 @@ Helicity
 
 \begin_layout Standard
 The beam is polarized in injector before going to the CEBAF accelerator.
- The polarization is controlled by a helicity control board (NIM) 
+ The polarization is controlled by a helicity control board (VME) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "helicityboard"
@@ -862,7 +862,7 @@ The HAPPEX DAQ were designed for the parity violation experiments.
 \end_layout
 
 \begin_layout Standard
-The HAPPEX DAQ contains a timing board (NIM) 
+The HAPPEX DAQ contains a timing board (VME) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "timingboard"
@@ -876,7 +876,7 @@ key "ADC18bob"
 
 \end_inset
 
-, a flexible IO (FLEXIO, NIM) 
+, a flexible IO (FLEXIO, VME) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "flexioEd"
